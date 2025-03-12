@@ -1,3 +1,4 @@
+import 'package:figma_task/views/settings_page.dart';
 import 'package:flutter/material.dart';
 
 //import 'package:figma_task/views/onboarding_page1.dart';
@@ -14,7 +15,8 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Inter',
       ),
-      home: const Subscription(),
+      home: const Settings(),
+      //home: const Subscription(),
       //home: const OnBoarding2(),
       //home: OnBoarding(),
       //home: PersonalizePage(),
