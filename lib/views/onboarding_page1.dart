@@ -1,3 +1,4 @@
+import 'package:figma_task/views/onboarding_page2.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -54,7 +55,18 @@ class _OnBoardingState extends State<OnBoarding> {
                               fontWeight: FontWeight.w400,
                             )),
                         const SizedBox(height: 30),
-                        PrimaryButton(buttonText: "Next", onTap: () {}),
+                        PrimaryButton(
+                          buttonText: "Next",
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const OnBoarding2(),
+                                ));
+                          },
+                          buttonHeight: 40,
+                          buttonWidth: 350,
+                        ),
                       ],
                     ),
                   ),
@@ -63,34 +75,6 @@ class _OnBoardingState extends State<OnBoarding> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Row(children: [
-                          Container(
-                            height: 6,
-                            width: 6,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Color.fromRGBO(0, 111, 253, 1),
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Container(
-                            height: 6,
-                            width: 6,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.grey,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Container(
-                            height: 6,
-                            width: 6,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ]),
                         const SizedBox(height: 10),
                         const Text("Create a prototype in just a few minutes",
                             style: TextStyle(
@@ -105,7 +89,17 @@ class _OnBoardingState extends State<OnBoarding> {
                               fontWeight: FontWeight.w400,
                             )),
                         const SizedBox(height: 30),
-                        PrimaryButton(buttonText: "Next", onTap: () {}),
+                        PrimaryButton(
+                          buttonText: "Next",
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const OnBoarding2()));
+                          },
+                          buttonHeight: 40,
+                          buttonWidth: 350,
+                        ),
                       ],
                     ),
                   ),
@@ -114,34 +108,6 @@ class _OnBoardingState extends State<OnBoarding> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Row(children: [
-                          Container(
-                            height: 6,
-                            width: 6,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Color.fromRGBO(0, 111, 253, 1),
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Container(
-                            height: 6,
-                            width: 6,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.grey,
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Container(
-                            height: 6,
-                            width: 6,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ]),
                         const SizedBox(height: 10),
                         const Text("Create a prototype in just a few minutes",
                             style: TextStyle(
@@ -156,7 +122,17 @@ class _OnBoardingState extends State<OnBoarding> {
                               fontWeight: FontWeight.w400,
                             )),
                         const SizedBox(height: 30),
-                        PrimaryButton(buttonText: "Next", onTap: () {}),
+                        PrimaryButton(
+                          buttonText: "Next",
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const OnBoarding2()));
+                          },
+                          buttonHeight: 40,
+                          buttonWidth: 350,
+                        ),
                       ],
                     ),
                   ),
