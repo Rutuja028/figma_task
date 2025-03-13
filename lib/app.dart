@@ -1,10 +1,10 @@
-import 'package:figma_task/views/settings_page.dart';
 import 'package:flutter/material.dart';
 
 //import 'package:figma_task/views/onboarding_page1.dart';
 //import 'package:figma_task/views/onboarding_page2.dart';
 //import 'package:figma_task/views/subscription_page.dart';
-import 'package:figma_task/views/subscription_tile.dart';
+import 'package:figma_task/views/settings_page.dart';
+
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
