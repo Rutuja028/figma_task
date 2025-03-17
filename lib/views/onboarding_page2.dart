@@ -1,3 +1,4 @@
+import 'package:figma_task/views/subscription_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
@@ -105,7 +106,13 @@ class _OnBoarding2State extends State<OnBoarding2> {
                   buttonText: "Next",
                   buttonHeight: 50,
                   buttonWidth: 380,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Subscription(),
+                        ));
+                  },
                 ),
               ]),
         ),

@@ -27,8 +27,12 @@ class _SettingsState extends State<Settings> {
     OptionItem('Storage', false),
   ];
 
-  bool checkBoxValue = false;
-  bool tickIcon = false;
+  int _selectedIndex = 2;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +54,22 @@ class _SettingsState extends State<Settings> {
                       )),
                 ),
                 const Gap(16),
-                Align(
-                  alignment: Alignment.center,
-                  child: Image.asset("assets/Avatar.png"),
+                Stack(
+                  children: [
+                    const CircleAvatar(
+                      radius: 45,
+                      backgroundImage: AssetImage(
+                        "assets/Avatar.png",
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: SvgPicture.asset(
+                        "assets/Edit.svg",
+                      ),
+                    ),
+                  ],
                 ),
                 const Align(
                   alignment: Alignment.center,
@@ -62,54 +79,87 @@ class _SettingsState extends State<Settings> {
                         fontWeight: FontWeight.w800,
                       )),
                 ),
+                const Align(
+                  alignment: Alignment.center,
+                  child: Text("@lucasscott3",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFF71727A),
+                      )),
+                ),
                 const Gap(41),
                 Expanded(
-                  child: ListView.builder(
+                  child: ListView.separated(
+                      separatorBuilder: (context, index) {
+                        return const Divider(
+                          color: Color(0xFFD4D6DD),
+                        );
+                      },
                       itemCount: options.length,
                       itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 8),
-                          child: ListTile(
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(color: Color(0xFFE0E1E7)),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            tileColor: Colors.white,
-                            selectedTileColor: const Color(0xFFEAF2FF),
-                            selected: options.elementAt(index).isSelected,
-                            onTap: () {
-                              setState(() {
-                                options.elementAt(index).isSelected =
-                                    !options.elementAt(index).isSelected;
-                              });
-                            },
-                            title: Text(
-                              options.elementAt(index).title,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black,
-                              ),
-                            ),
-                            trailing: IconButton(
-                              icon: const Icon(Icons.arrow_forward_ios),
-                              onPressed: () {
-                                setState(() {});
-                              },
+                        return ListTile(
+                          title: Text(
+                            options[index].title,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black,
                             ),
                           ),
+                          trailing: SvgPicture.asset("assets/forwardArrow.svg"),
                         );
                       }),
                 ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Image.asset("assets/messages.png",
-                          width: 120, height: 90),
-                      Image.asset("assets/friends.png", width: 120, height: 90),
-                      Image.asset("assets/settings.png",
-                          width: 120, height: 90),
-                    ])
+                BottomNavigationBar(
+                  onTap: _onItemTapped,
+                  currentIndex: _selectedIndex,
+                  selectedLabelStyle:
+                      const TextStyle(fontWeight: FontWeight.w600),
+                  unselectedLabelStyle: const TextStyle(),
+                  elevation: 0,
+                  backgroundColor: Colors.white,
+                  selectedItemColor: Colors.black,
+                  unselectedItemColor: Colors.black,
+                  items: <BottomNavigationBarItem>[
+                    BottomNavigationBarItem(
+                        activeIcon: SvgPicture.asset(
+                          "assets/Icon.svg",
+                          colorFilter: const ColorFilter.mode(
+                              Color(0xFF006FFD), BlendMode.srcIn),
+                        ),
+                        icon: SvgPicture.asset(
+                          "assets/Icon.svg",
+                          colorFilter: const ColorFilter.mode(
+                              Color(0xFFD4D6DD), BlendMode.srcIn),
+                        ),
+                        label: 'Chats'),
+                    BottomNavigationBarItem(
+                        icon: SvgPicture.asset(
+                          "assets/friends.svg",
+                          colorFilter: const ColorFilter.mode(
+                              Color(0xFFD4D6DD), BlendMode.srcIn),
+                        ),
+                        activeIcon: SvgPicture.asset(
+                          "assets/friends.svg",
+                          colorFilter: const ColorFilter.mode(
+                              Color(0xFF006FFD), BlendMode.srcIn),
+                        ),
+                        label: 'Friends'),
+                    BottomNavigationBarItem(
+                        icon: SvgPicture.asset(
+                          "assets/settings.svg",
+                          colorFilter: const ColorFilter.mode(
+                              Color(0xFFD4D6DD), BlendMode.srcIn),
+                        ),
+                        activeIcon: SvgPicture.asset(
+                          "assets/settings.svg",
+                          colorFilter: const ColorFilter.mode(
+                              Color(0xFF006FFD), BlendMode.srcIn),
+                        ),
+                        label: 'Settings'),
+                  ],
+                ),
               ]),
         ),
       ),
