@@ -1,4 +1,5 @@
 import 'package:figma_task/components/elevated_button.dart';
+import 'package:figma_task/components/text_form_field.dart';
 import 'package:figma_task/views/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -70,15 +71,13 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      TextFormField(
+                      PrimaryTextFormField(
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(
                                 RegExp(r'[a-zA-z]'))
                           ],
                           controller: nameController,
-                          decoration: const InputDecoration(
-                            labelText: "Name",
-                          ),
+                          labelText: "Name",
                           validator: (valu) {
                             if (valu!.length > 30) {
                               return "Limit Exceeded";
@@ -86,11 +85,9 @@ class _SignUpState extends State<SignUp> {
                             return null;
                           }),
                       const SizedBox(height: 10),
-                      TextFormField(
+                      PrimaryTextFormField(
                         controller: emailController,
-                        decoration: const InputDecoration(
-                          labelText: "Email Address",
-                        ),
+                        labelText: "Email Address",
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return "Please enter your email";
@@ -103,20 +100,18 @@ class _SignUpState extends State<SignUp> {
                         },
                       ),
                       const SizedBox(height: 10),
-                      TextFormField(
+                      PrimaryTextFormField(
                         controller: passwordController,
-                        decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  showPass = !showPass;
-                                });
-                              },
-                              icon: showPass
-                                  ? const Icon(Icons.visibility_off_outlined)
-                                  : const Icon(Icons.visibility_outlined)),
-                          labelText: "Password",
-                        ),
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                showPass = !showPass;
+                              });
+                            },
+                            icon: showPass
+                                ? const Icon(Icons.visibility_off_outlined)
+                                : const Icon(Icons.visibility_outlined)),
+                        labelText: "Password",
                         obscureText: showPass ? false : true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -128,22 +123,20 @@ class _SignUpState extends State<SignUp> {
                         },
                       ),
                       const SizedBox(height: 10),
-                      TextFormField(
+                      PrimaryTextFormField(
                         controller: confirmPasswordController,
-                        decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  confirmPass = !confirmPass;
-                                });
-                              },
-                              icon: confirmPass
-                                  ? const Icon(
-                                      Icons.visibility_off_outlined,
-                                    )
-                                  : const Icon(Icons.visibility_outlined)),
-                          labelText: "Confirm Password",
-                        ),
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                confirmPass = !confirmPass;
+                              });
+                            },
+                            icon: confirmPass
+                                ? const Icon(
+                                    Icons.visibility_off_outlined,
+                                  )
+                                : const Icon(Icons.visibility_outlined)),
+                        labelText: "Confirm Password",
                         obscureText: confirmPass ? false : true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -157,6 +150,8 @@ class _SignUpState extends State<SignUp> {
                       ),
                       const SizedBox(height: 20),
                       PrimaryButton(
+                        buttonHeight: 50,
+                        buttonWidth: 380,
                         buttonText: "Sign Up",
                         onTap: _signUp,
                       ),

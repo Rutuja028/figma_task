@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
+
+import 'package:figma_task/components/text_form_field.dart';
 import 'package:figma_task/components/elevated_button.dart';
 import 'package:figma_task/views/onboarding_page1.dart';
 import 'package:figma_task/views/sign_up.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class SignIn extends StatefulWidget {
@@ -19,21 +21,21 @@ class _SignInState extends State<SignIn> {
 
   bool showPass = false;
 
-  void _signIn() {
-    if (_formKey.currentState!.validate()) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const SignUp()),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Please enter valid email and password"),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
-  }
+  // void _signIn() {
+  //   if (_formKey.currentState!.validate()) {
+  //     Navigator.push(
+  //       context,
+  //       MaterialPageRoute(builder: (context) => const SignUp()),
+  //     );
+  //   } else {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       const SnackBar(
+  //         content: Text("Please enter valid email and password"),
+  //         backgroundColor: Colors.red,
+  //       ),
+  //     );
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +50,10 @@ class _SignInState extends State<SignIn> {
             children: [
               Expanded(
                 child: Image.asset(
-                  "assets/strelema_logo.png",
+                  "assets/SignInImage.png",
 
                   //height: 300,
-                  //width: double.infinity,
+                  width: double.infinity,
                   fit: BoxFit.fitWidth,
                 ),
               ),
@@ -65,24 +67,25 @@ class _SignInState extends State<SignIn> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          const Text("Welcome!",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 24,
-                                fontWeight: FontWeight.w800,
-                              )),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: const Text("Welcome!",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w800,
+                                )),
+                          ),
                           const SizedBox(height: 20),
-                          TextFormField(
+                          PrimaryTextFormField(
                             keyboardType: TextInputType.phone,
                             controller: emailController,
                             inputFormatters: [
                               FilteringTextInputFormatter.digitsOnly,
                               LengthLimitingTextInputFormatter(10),
                             ],
-                            decoration: const InputDecoration(
-                              prefixText: "+91",
-                              labelText: "Phone Number",
-                            ),
+                            prefixText: "+91",
+                            labelText: "Phone Number",
                             validator: (value) {
                               if (value?.isEmpty ?? true) {
                                 return "Please enter your phone number";
@@ -91,20 +94,19 @@ class _SignInState extends State<SignIn> {
                             },
                           ),
                           const SizedBox(height: 10),
-                          TextFormField(
+                          PrimaryTextFormField(
+                            keyboardType: TextInputType.text,
                             controller: passwordController,
-                            decoration: InputDecoration(
-                              labelText: "Password",
-                              suffixIcon: IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    showPass = !showPass;
-                                  });
-                                },
-                                icon: showPass
-                                    ? const Icon(Icons.visibility_off_outlined)
-                                    : const Icon(Icons.visibility_outlined),
-                              ),
+                            labelText: "Password",
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  showPass = !showPass;
+                                });
+                              },
+                              icon: showPass
+                                  ? const Icon(Icons.visibility_off_outlined)
+                                  : const Icon(Icons.visibility_outlined),
                             ),
                             obscureText: showPass ? false : true,
                             validator: (value) {
@@ -116,16 +118,17 @@ class _SignInState extends State<SignIn> {
                               }
                               return null;
                             },
+                            inputFormatters: [],
                           ),
                           const SizedBox(height: 10),
                           Align(
-                            alignment: Alignment.centerRight,
+                            alignment: Alignment.centerLeft,
                             child: InkWell(
                               onTap: () {},
                               child: const Text(
                                 "Forgot Password?",
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: Color(0xFF006FFD),
                                   fontSize: 13,
                                 ),
                               ),
@@ -133,6 +136,8 @@ class _SignInState extends State<SignIn> {
                           ),
                           const SizedBox(height: 20),
                           PrimaryButton(
+                            buttonHeight: 50,
+                            buttonWidth: 380,
                             buttonText: "Sign In",
                             onTap: () {
                               Navigator.push(
@@ -143,9 +148,10 @@ class _SignInState extends State<SignIn> {
                             },
                           ),
                           const SizedBox(height: 20),
-                          Row(children: [
-                            const Center(
-                              child: Text(
+                          Align(
+                            alignment: Alignment.center,
+                            child: Row(children: [
+                              Text(
                                 "Not a member? ",
                                 style: TextStyle(
                                   color: Color(0xFF808080),
@@ -153,25 +159,25 @@ class _SignInState extends State<SignIn> {
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const SignUp(),
-                                    ));
-                              },
-                              child: const Text(
-                                "Register Now",
-                                style: TextStyle(
-                                  color: Color(0xFF000000),
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w400,
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const SignUp(),
+                                      ));
+                                },
+                                child: const Text(
+                                  "Register Now",
+                                  style: TextStyle(
+                                    color: Color(0xFF000000),
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                                 ),
-                              ),
-                            )
-                          ])
+                              )
+                            ]),
+                          )
                         ],
                       ),
                     ),

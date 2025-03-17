@@ -28,7 +28,7 @@ class _OnBoardingState extends State<OnBoarding> {
                     });
                   },
                   viewportFraction: 1,
-                  enlargeCenterPage: false,
+                  //enlargeCenterPage: false,
                   enableInfiniteScroll: false,
                   height: 250,
                   autoPlay: false,
