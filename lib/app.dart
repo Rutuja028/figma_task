@@ -17,6 +17,7 @@ class MainApp extends StatelessWidget {
         fontFamily: 'Inter',
       ),
       home: const SignIn(),
+      debugShowCheckedModeBanner: false,
       //home: const Settings(),
       //home: const Subscription(),
       //home: const OnBoarding2(),

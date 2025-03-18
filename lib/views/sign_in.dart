@@ -4,7 +4,6 @@ import 'package:figma_task/components/text_form_field.dart';
 import 'package:figma_task/components/elevated_button.dart';
 import 'package:figma_task/views/onboarding_page1.dart';
 import 'package:figma_task/views/sign_up.dart';
-import 'package:flutter/services.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -21,21 +20,21 @@ class _SignInState extends State<SignIn> {
 
   bool showPass = false;
 
-  // void _signIn() {
-  //   if (_formKey.currentState!.validate()) {
-  //     Navigator.push(
-  //       context,
-  //       MaterialPageRoute(builder: (context) => const SignUp()),
-  //     );
-  //   } else {
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       const SnackBar(
-  //         content: Text("Please enter valid email and password"),
-  //         backgroundColor: Colors.red,
-  //       ),
-  //     );
-  //   }
-  // }
+  void _signIn() {
+    if (_formKey.currentState!.validate()) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const OnBoarding()),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Please enter valid email and password"),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,142 +44,146 @@ class _SignInState extends State<SignIn> {
         body: GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () => FocusScope.of(context).unfocus(),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
+          child: ListView(
             children: [
-              Expanded(
-                child: Image.asset(
-                  "assets/SignInImage.png",
-
-                  //height: 300,
-                  width: double.infinity,
-                  fit: BoxFit.fitWidth,
-                ),
+              Image.asset(
+                "assets/SignInImage.png",
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.5,
+                fit: BoxFit.fitWidth,
               ),
-              Expanded(
-                flex: 2,
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: const Text("Welcome!",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 24,
+                              fontWeight: FontWeight.w800,
+                            )),
+                      ),
+                      const SizedBox(height: 20),
+                      // PrimaryTextFormField(
+                      //   keyboardType: TextInputType.phone,
+                      //   obscureText: false,
+                      //   controller: emailController,
+                      //   inputFormatters: [
+                      //     FilteringTextInputFormatter.digitsOnly,
+                      //     LengthLimitingTextInputFormatter(10),
+                      //   ],
+                      //   prefixText: "+91",
+                      //   hintText: "Phone Number",
+                      //   validator: (value) {
+                      //     if (value?.isEmpty ?? true) {
+                      //       return "Please enter your phone number";
+                      //     } else if (value!.length < 10) {
+                      //       return "10 digits required";
+                      //     }
+                      //     return null;
+                      //   },
+                      // ),
+                      PrimaryTextFormField(
+                        controller: emailController,
+                        hintText: "Email Address",
+                        obscureText: false,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Please enter your email";
+                          } else if (!RegExp(
+                                  r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
+                              .hasMatch(value)) {
+                            return "Enter a valid email";
+                          }
+                          return null;
+                        },
+                      ),
+
+                      const SizedBox(height: 10),
+                      PrimaryTextFormField(
+                        keyboardType: TextInputType.text,
+                        controller: passwordController,
+                        hintText: "Password",
+                        suffixIcon: IconButton(
+                          icon: showPass
+                              ? const Icon(Icons.visibility_off_rounded)
+                              : const Icon(Icons.visibility_rounded),
+                          color: Color(0xFFC5C6CC),
+                          onPressed: () {
+                            setState(() {
+                              showPass = !showPass;
+                            });
+                          },
+                        ),
+                        obscureText: showPass,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Please enter your password";
+                          }
+                          if (value.length < 6) {
+                            return "Password must be atleast 6 characters";
+                          }
+                          return null;
+                        },
+                        inputFormatters: [],
+                      ),
+                      const SizedBox(height: 10),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: InkWell(
+                          onTap: () {},
+                          child: const Text(
+                            "Forgot Password?",
+                            style: TextStyle(
+                              color: Color(0xFF006FFD),
+                              fontSize: 13,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      PrimaryButton(
+                        buttonHeight: 50,
+                        buttonWidth: 380,
+                        buttonText: "Login",
+                        onTap: _signIn,
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
                         children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: const Text("Welcome!",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w800,
-                                )),
-                          ),
-                          const SizedBox(height: 20),
-                          PrimaryTextFormField(
-                            keyboardType: TextInputType.phone,
-                            controller: emailController,
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly,
-                              LengthLimitingTextInputFormatter(10),
-                            ],
-                            prefixText: "+91",
-                            labelText: "Phone Number",
-                            validator: (value) {
-                              if (value?.isEmpty ?? true) {
-                                return "Please enter your phone number";
-                              }
-                              return null;
-                            },
-                          ),
-                          const SizedBox(height: 10),
-                          PrimaryTextFormField(
-                            keyboardType: TextInputType.text,
-                            controller: passwordController,
-                            labelText: "Password",
-                            suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  showPass = !showPass;
-                                });
-                              },
-                              icon: showPass
-                                  ? const Icon(Icons.visibility_off_outlined)
-                                  : const Icon(Icons.visibility_outlined),
-                            ),
-                            obscureText: showPass ? false : true,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return "Please enter your password";
-                              }
-                              if (value.length < 6) {
-                                return "Password must be atleast 6 characters";
-                              }
-                              return null;
-                            },
-                            inputFormatters: [],
-                          ),
-                          const SizedBox(height: 10),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: InkWell(
-                              onTap: () {},
-                              child: const Text(
-                                "Forgot Password?",
-                                style: TextStyle(
-                                  color: Color(0xFF006FFD),
-                                  fontSize: 13,
-                                ),
-                              ),
+                          Text(
+                            "Not a member? ",
+                            style: TextStyle(
+                              color: Color(0xFF808080),
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
-                          const SizedBox(height: 20),
-                          PrimaryButton(
-                            buttonHeight: 50,
-                            buttonWidth: 380,
-                            buttonText: "Sign In",
+                          InkWell(
                             onTap: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const OnBoarding(),
+                                    builder: (context) => const SignUp(),
                                   ));
                             },
-                          ),
-                          const SizedBox(height: 20),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Row(children: [
-                              Text(
-                                "Not a member? ",
-                                style: TextStyle(
-                                  color: Color(0xFF808080),
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w400,
-                                ),
+                            child: const Text(
+                              "Register Now",
+                              style: TextStyle(
+                                color: Color(0xFF000000),
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400,
                               ),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const SignUp(),
-                                      ));
-                                },
-                                child: const Text(
-                                  "Register Now",
-                                  style: TextStyle(
-                                    color: Color(0xFF000000),
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              )
-                            ]),
-                          )
+                            ),
+                          ),
                         ],
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ),
