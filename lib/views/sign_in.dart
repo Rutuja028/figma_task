@@ -120,7 +120,7 @@ class _SignInState extends State<SignIn> {
                             });
                           },
                         ),
-                        obscureText: showPass,
+                        obscureText: showPass ? false : true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return "Please enter your password";
