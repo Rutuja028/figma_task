@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 //import 'package:figma_task/views/onboarding_page1.dart';
 //import 'package:figma_task/views/onboarding_page2.dart';
-//import 'package:figma_task/views/subscription_page.dart';
-import 'package:figma_task/views/settings_page.dart';
-import 'package:figma_task/views/sign_in.dart';
+import 'package:figma_task/views/subscription_tile.dart';
+// import 'package:figma_task/views/settings_page.dart';
+// import 'package:figma_task/views/sign_in.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -16,10 +16,10 @@ class MainApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         fontFamily: 'Inter',
       ),
-      home: const SignIn(),
+      //home: const SignIn(),
       debugShowCheckedModeBanner: false,
       //home: const Settings(),
-      //home: const Subscription(),
+      home: const Subscription(),
       //home: const OnBoarding2(),
       //home: OnBoarding(),
       //home: PersonalizePage(),
