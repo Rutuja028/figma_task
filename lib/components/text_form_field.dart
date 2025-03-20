@@ -32,7 +32,7 @@ class PrimaryTextFormField extends StatelessWidget {
       obscureText: obscureText ?? true,
       keyboardType: keyboardType,
       inputFormatters: inputFormatters,
-      cursorColor: Colors.black,
+      cursorColor: Color(0xFF006FFD),
       decoration: InputDecoration(
         prefixText: prefixText,
         suffixIcon: suffixIcon,

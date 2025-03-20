@@ -1,6 +1,7 @@
 import 'package:figma_task/views/onboarding_page2.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:gap/gap.dart';
 
 import '../components/elevated_button.dart';
 
@@ -61,7 +62,7 @@ class _OnBoardingState extends State<OnBoarding> {
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const SizedBox(height: 10),
+                          Gap(24),
                           const Text("Create a prototype in just a few minutes",
                               style: TextStyle(
                                 fontSize: 20,
@@ -92,7 +93,7 @@ class _OnBoardingState extends State<OnBoarding> {
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const SizedBox(height: 10),
+                          Gap(24),
                           const Text("Create a prototype in just a few minutes",
                               style: TextStyle(
                                 fontSize: 20,
@@ -123,7 +124,7 @@ class _OnBoardingState extends State<OnBoarding> {
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const SizedBox(height: 10),
+                          Gap(24),
                           const Text("Create a prototype in just a few minutes",
                               style: TextStyle(
                                 fontSize: 20,
