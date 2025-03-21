@@ -1,3 +1,4 @@
+import 'package:figma_task/views/projects_page.dart';
 import 'package:flutter/material.dart';
 
 //import 'package:figma_task/views/onboarding_page1.dart';
@@ -18,8 +19,9 @@ class MainApp extends StatelessWidget {
       ),
       //home: const SignIn(),
       debugShowCheckedModeBanner: false,
+      home: Projects(),
       //home: const Settings(),
-      home: const Subscription(),
+      //home: const Subscription(),
       //home: const OnBoarding2(),
       //home: OnBoarding(),
       //home: PersonalizePage(),

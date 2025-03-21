@@ -1,5 +1,5 @@
 import 'package:figma_task/components/elevated_button.dart';
-import 'package:figma_task/views/settings_page.dart';
+import 'package:figma_task/views/settings_2.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -155,7 +155,6 @@ class _SubscriptionState extends State<Subscription> {
                   buttonHeight: 50,
                   buttonWidth: 380,
                   onTap: () {
-                    print("Subscription page");
                     Navigator.push(
                       context,
                       MaterialPageRoute(
