@@ -1,5 +1,5 @@
 import 'package:figma_task/components/elevated_button.dart';
-import 'package:figma_task/views/settings_page.dart';
+import 'package:figma_task/views/settings_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -143,7 +143,8 @@ class _SubscriptionState extends State<Subscription> {
             ),
             Gap(32),
             Container(
-              height: 163,
+              padding: EdgeInsets.all(24),
+              height: 178,
               width: 332,
               decoration: BoxDecoration(
                 color: Color(0xFFF8F9FE),
@@ -152,29 +153,68 @@ class _SubscriptionState extends State<Subscription> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("You'll get:"),
-                  Gap(24),
+                  const Text("You'll get:",
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w800)),
+                  Gap(16),
                   Row(
                     children: [
-                      SvgPicture.asset("assets/Star_filled.svg"),
-                      const Text("Unlimited acces"),
+                      SvgPicture.asset(
+                        "assets/Star_filled.svg",
+                        height: 10,
+                        width: 10,
+                      ),
+                      Gap(12),
+                      const Text(
+                        "Unlimited acces",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Color(0xFF71727A),
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
                     ],
                   ),
                   Gap(16),
                   Row(
                     children: [
-                      SvgPicture.asset("assets/Star_filled.svg"),
-                      const Text("200GB storage"),
+                      SvgPicture.asset(
+                        "assets/Star_filled.svg",
+                        height: 10,
+                        width: 10,
+                      ),
+                      Gap(12),
+                      const Text(
+                        "200GB storage",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Color(0xFF71727A),
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
                     ],
                   ),
                   Gap(16),
                   Row(
                     children: [
-                      SvgPicture.asset("assets/Star_filled.svg"),
-                      const Text("Sync all your devices"),
+                      SvgPicture.asset(
+                        "assets/Star_filled.svg",
+                        height: 10,
+                        width: 10,
+                      ),
+                      Gap(12),
+                      const Text(
+                        "Sync all your devices",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Color(0xFF71727A),
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
                     ],
                   ),
-                  Gap(24),
                 ],
               ),
             ),

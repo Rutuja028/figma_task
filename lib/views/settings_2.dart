@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:figma_task/views/chat_list.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
@@ -16,7 +18,7 @@ class OptionItem {
 }
 
 class NavigationIndex {
-  final String pageName;
+  final Widget pageName;
   NavigationIndex(this.pageName);
 }
 
@@ -32,19 +34,19 @@ class _SettingsState extends State<Settings> {
     OptionItem('Storage', false),
   ];
   List<NavigationIndex> page = [
-    NavigationIndex("ChatList()"),
-    NavigationIndex("Settings()"),
-    NavigationIndex("Friends()"),
+    NavigationIndex(ChatList()),
+    NavigationIndex(Container()),
+    NavigationIndex(Settings()),
   ];
-
   int _selectedIndex = 2;
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-      // Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      // builder: (context) => page.NavigationIndex.pageName));
+
+      Navigator.replace(context,
+          oldRoute: ModalRoute.of(context)!,
+          newRoute:
+              MaterialPageRoute(builder: (context) => page[index].pageName));
     });
   }
 
@@ -52,52 +54,52 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: _onItemTapped,
-          currentIndex: _selectedIndex,
-          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
-          unselectedLabelStyle: const TextStyle(),
+        bottomNavigationBar: NavigationBar(
+          onDestinationSelected: _onItemTapped,
+          selectedIndex: _selectedIndex,
+          //selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
           elevation: 0,
+          indicatorColor: Colors.white,
+
           backgroundColor: Colors.white,
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.black,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                activeIcon: SvgPicture.asset(
-                  "assets/Icon.svg",
-                  colorFilter: const ColorFilter.mode(
-                      Color(0xFF006FFD), BlendMode.srcIn),
-                ),
-                icon: SvgPicture.asset(
-                  "assets/Icon.svg",
-                  colorFilter: const ColorFilter.mode(
-                      Color(0xFFD4D6DD), BlendMode.srcIn),
-                ),
-                label: 'Chats'),
-            BottomNavigationBarItem(
+          destinations: <Widget>[
+            NavigationDestination(
+              icon: SvgPicture.asset(
+                "assets/Icon.svg",
+                colorFilter:
+                    const ColorFilter.mode(Color(0xFFD4D6DD), BlendMode.srcIn),
+              ),
+              selectedIcon: SvgPicture.asset(
+                "assets/Icon.svg",
+                colorFilter:
+                    const ColorFilter.mode(Color(0xFF006FFD), BlendMode.srcIn),
+              ),
+              label: 'Chats',
+            ),
+            NavigationDestination(
                 icon: SvgPicture.asset(
                   "assets/friends.svg",
                   colorFilter: const ColorFilter.mode(
                       Color(0xFFD4D6DD), BlendMode.srcIn),
                 ),
-                activeIcon: SvgPicture.asset(
+                selectedIcon: SvgPicture.asset(
                   "assets/friends.svg",
                   colorFilter: const ColorFilter.mode(
                       Color(0xFF006FFD), BlendMode.srcIn),
                 ),
                 label: 'Friends'),
-            BottomNavigationBarItem(
+            NavigationDestination(
                 icon: SvgPicture.asset(
                   "assets/settings.svg",
                   colorFilter: const ColorFilter.mode(
                       Color(0xFFD4D6DD), BlendMode.srcIn),
                 ),
-                activeIcon: SvgPicture.asset(
+                selectedIcon: SvgPicture.asset(
                   "assets/settings.svg",
                   colorFilter: const ColorFilter.mode(
                       Color(0xFF006FFD), BlendMode.srcIn),
                 ),
-                label: 'Settings'),
+                label: 'Settings')
           ],
         ),
         backgroundColor: Colors.white,
