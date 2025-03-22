@@ -2,7 +2,7 @@ import 'package:figma_task/views/settings_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class ChatList extends StatefulWidget{
+class ChatList extends StatefulWidget {
   const ChatList({super.key});
 
   @override
@@ -140,8 +140,8 @@ class _ChatListState extends State<ChatList> {
               height: 50,
               width: 380,
               child: SearchBar(
-                elevation: WidgetStatePropertyAll(0),
-                backgroundColor: WidgetStatePropertyAll(Color(0xFFF8F9FE)),
+                elevation: MaterialStatePropertyAll(0),
+                backgroundColor: MaterialStatePropertyAll(Color(0xFFF8F9FE)),
                 leading: IconButton(
                   onPressed: () {},
                   icon: Icon(

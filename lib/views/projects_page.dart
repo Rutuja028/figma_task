@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 class Projects extends StatefulWidget {
   const Projects({super.key});
 
+  @override
   State createState() => _ProjectsState();
 }
 
@@ -12,8 +13,17 @@ class ProjectBottomNavigate {
   ProjectBottomNavigate(this.projectBottomPage);
 }
 
-class _ProjectsState extends State<Projects> {
+class _ProjectsState extends State<Projects>
+    with SingleTickerProviderStateMixin {
+  late TabController _myTabController;
   int _selectedInd = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _myTabController = TabController(length: 3, vsync: this);
+  }
+
   void _onProjecTapped(int ind) {
     setState(() {
       _selectedInd = ind;
@@ -94,6 +104,14 @@ class _ProjectsState extends State<Projects> {
         ],
       ),
       appBar: AppBar(
+        bottom: TabBar(
+          controller: _myTabController,
+          tabs: const [
+            Text("To do"),
+            Text("In progress"),
+            Text("Finished"),
+          ],
+        ),
         backgroundColor: Colors.white,
         centerTitle: true,
         title: const Text(
@@ -113,23 +131,35 @@ class _ProjectsState extends State<Projects> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          TabBarView(
-            children: const <Widget>[
-              Center(
-                child: Text("It's cloudy here"),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Image.asset("project_image.png"),
+            const Center(
+              child: Text(
+                "Nothing here. For now.",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
-              Center(
-                child: Text("It's rainy here"),
+            ),
+            const Center(
+              child: Text(
+                "This is where you’ll find your finished projects.",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w800,
+                  color: Color(0xFF71727A),
+                ),
               ),
-              Center(
-                child: Text("It's sunny here"),
-              ),
-            ],
-          ),
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
+
+  _ProjectsState newMethod() => this;
 }
