@@ -140,8 +140,8 @@ class _ChatListState extends State<ChatList> {
               height: 50,
               width: 380,
               child: SearchBar(
-                elevation: WidgetStatePropertyAll(0),
-                backgroundColor: WidgetStatePropertyAll(Color(0xFFF8F9FE)),
+                elevation: MaterialStatePropertyAll(0),
+                backgroundColor: MaterialStatePropertyAll(Color(0xFFF8F9FE)),
                 leading: IconButton(
                   onPressed: () {},
                   icon: Icon(
