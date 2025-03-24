@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter_svg/flutter_svg.dart";
 
 class ProjFeedback extends StatefulWidget {
   const ProjFeedback({super.key});
@@ -8,6 +9,7 @@ class ProjFeedback extends StatefulWidget {
 }
 
 class _ProjFeedbackState extends State<ProjFeedback> {
+  bool selectedStar = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +32,20 @@ class _ProjFeedbackState extends State<ProjFeedback> {
             ),
 
             /// 5 star in row
-            ///
+
+            Row(
+              children:[
+                GestureDetector(
+                  onTap: () {
+                    selectedStar = !selectedStar;
+                  },
+                  child: selectedStar
+                  ? SvgPicture.asset("assets/star_outlined.svg")
+                  : SvgPicture.asset("assets/Star_filled.svg"),
+                ),
+              ]
+            ),
+
             const Text(
               "What did you like about it?",
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
