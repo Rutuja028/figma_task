@@ -1,5 +1,8 @@
+import 'package:figma_task/components/elevated_button.dart' show PrimaryButton;
+import 'package:figma_task/views/feedback_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 
 class Projects extends StatefulWidget {
   const Projects({super.key});
@@ -154,7 +157,21 @@ class _ProjectsState extends State<Projects>
                   color: Color(0xFF71727A),
                 ),
               ),
-            )
+            ),
+            const Gap(32),
+            PrimaryButton(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 12.5, horizontal: 16),
+              buttonText: 'Start a project',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ProjFeedback(),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
