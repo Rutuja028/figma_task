@@ -55,39 +55,35 @@ class _SubscriptionState extends State<Subscription> {
         backgroundColor: Colors.white,
         body: Padding(
           padding: const EdgeInsets.only(right: 24, left: 24),
-          child: Column(children: [
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             const Gap(48),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text("Choose your\nsubscription plan",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w800,
-                  )),
-            ),
-            const Gap(16),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "And get a 7-day free trial",
+            const Text("Choose your\nsubscription plan",
                 style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.grey,
-                ),
+                  letterSpacing: 0.01,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w800,
+                )),
+            const Gap(16),
+            const Text(
+              "And get a 7-day free trial",
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey,
               ),
             ),
-            const Gap(46),
+            const Gap(42),
             ...radioOptions.asMap().entries.map(
               (e) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
+                return Container(
+                  margin: const EdgeInsets.symmetric(vertical: 6),
                   child: ListTile(
-                    dense: false,
+                    contentPadding: const EdgeInsets.all(12),
+                    dense: true,
                     visualDensity: VisualDensity.compact,
                     shape: RoundedRectangleBorder(
                       side: const BorderSide(color: Color(0xFFE0E1E7)),
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(16),
                     ),
                     tileColor: Colors.white,
                     selectedTileColor: const Color(0xFFEAF2FF),
@@ -118,21 +114,24 @@ class _SubscriptionState extends State<Subscription> {
                       ),
                     ),
                     trailing: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          e.value.trailTextUp,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.black,
+                        Flexible(
+                          child: Text(
+                            e.value.trailTextUp,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w800,
+                            ),
                           ),
                         ),
-                        Text(
-                          e.value.trailTextDown,
-                          style: const TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black,
+                        Flexible(
+                          child: Text(
+                            e.value.trailTextDown,
+                            style: const TextStyle(
+                              fontSize: 10,
+                            ),
                           ),
                         ),
                       ],
@@ -141,73 +140,72 @@ class _SubscriptionState extends State<Subscription> {
                 );
               },
             ),
-            Gap(32),
+            const Gap(26),
             Container(
-              padding: EdgeInsets.all(24),
-              height: 178,
-              width: 332,
+              padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: Color(0xFFF8F9FE),
+                color: const Color(0xFFF8F9FE),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text("You'll get:",
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w800)),
-                  Gap(16),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
+                  const Gap(16),
                   Row(
                     children: [
                       SvgPicture.asset(
-                        "assets/Star_filled.svg",
-                        height: 10,
-                        width: 10,
+                        "assets/star_filled.svg",
+                        colorFilter: const ColorFilter.mode(
+                            Color(0xFF006FFD), BlendMode.srcIn),
+                        height: 12,
                       ),
-                      Gap(12),
+                      const Gap(12),
                       const Text(
                         "Unlimited acces",
                         style: TextStyle(
+                          height: 16 / 12,
+                          letterSpacing: 0.01,
                           fontSize: 12,
                           color: Color(0xFF71727A),
-                          fontWeight: FontWeight.normal,
                         ),
                       ),
                     ],
                   ),
-                  Gap(16),
+                  const Gap(16),
                   Row(
                     children: [
                       SvgPicture.asset(
-                        "assets/Star_filled.svg",
-                        height: 10,
-                        width: 10,
+                        "assets/star_filled.svg",
+                        height: 12,
                       ),
-                      Gap(12),
+                      const Gap(12),
                       const Text(
                         "200GB storage",
                         style: TextStyle(
+                          height: 16 / 12,
+                          letterSpacing: 0.01,
                           fontSize: 12,
                           color: Color(0xFF71727A),
-                          fontWeight: FontWeight.normal,
                         ),
                       ),
                     ],
                   ),
-                  Gap(16),
+                  const Gap(16),
                   Row(
                     children: [
                       SvgPicture.asset(
-                        "assets/Star_filled.svg",
-                        height: 10,
-                        width: 10,
+                        "assets/star_filled.svg",
+                        height: 12,
                       ),
-                      Gap(12),
+                      const Gap(12),
                       const Text(
                         "Sync all your devices",
                         style: TextStyle(
+                          height: 16 / 12,
+                          letterSpacing: 0.01,
                           fontSize: 12,
                           color: Color(0xFF71727A),
                           fontWeight: FontWeight.normal,
@@ -218,23 +216,26 @@ class _SubscriptionState extends State<Subscription> {
                 ],
               ),
             ),
-            Gap(88),
-            PrimaryButton(
-              buttonText: "Next",
-              buttonHeight: 50,
-              buttonWidth: 380,
+          ]),
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: SizedBox(
+            height: 50,
+            width: 380,
+            child: PrimaryButton(
+              buttonText: "Subscribe",
               onTap: () {
                 setState(() {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Settings(),
+                        builder: (context) => const Settings(),
                       ));
                 });
               },
             ),
-            Gap(24),
-          ]),
+          ),
         ),
       ),
     );

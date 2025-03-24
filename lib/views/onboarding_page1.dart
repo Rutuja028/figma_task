@@ -20,7 +20,7 @@ class _OnBoardingState extends State<OnBoarding> {
       child: Scaffold(
         backgroundColor: Colors.white,
         bottomSheet: BottomSheet(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
           backgroundColor: Colors.white,
           builder: (context2) {
             return Padding(
@@ -62,7 +62,7 @@ class _OnBoardingState extends State<OnBoarding> {
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Gap(24),
+                          const Gap(24),
                           const Text("Create a prototype in just a few minutes",
                               style: TextStyle(
                                 fontSize: 20,
@@ -76,24 +76,26 @@ class _OnBoardingState extends State<OnBoarding> {
                                 fontWeight: FontWeight.w400,
                               )),
                           const SizedBox(height: 30),
-                          PrimaryButton(
-                            buttonText: "Next",
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const OnBoarding2(),
-                                  ));
-                            },
-                            buttonHeight: 40,
-                            buttonWidth: 350,
+                          SizedBox(
+                            height: 50,
+                            width: 380,
+                            child: PrimaryButton(
+                              buttonText: "Next",
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const OnBoarding2(),
+                                    ));
+                              },
+                            ),
                           ),
                         ],
                       ),
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Gap(24),
+                          const Gap(24),
                           const Text("Create a prototype in just a few minutes",
                               style: TextStyle(
                                 fontSize: 20,
@@ -107,24 +109,26 @@ class _OnBoardingState extends State<OnBoarding> {
                                 fontWeight: FontWeight.w400,
                               )),
                           const SizedBox(height: 30),
-                          PrimaryButton(
-                            buttonText: "Next",
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const OnBoarding2()));
-                            },
-                            buttonHeight: 40,
-                            buttonWidth: 350,
+                          SizedBox(
+                            height: 50,
+                            width: 380,
+                            child: PrimaryButton(
+                              buttonText: "Next",
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const OnBoarding2()));
+                              },
+                            ),
                           ),
                         ],
                       ),
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Gap(24),
+                          const Gap(24),
                           const Text("Create a prototype in just a few minutes",
                               style: TextStyle(
                                 fontSize: 20,
@@ -138,17 +142,19 @@ class _OnBoardingState extends State<OnBoarding> {
                                 fontWeight: FontWeight.w400,
                               )),
                           const SizedBox(height: 30),
-                          PrimaryButton(
-                            buttonText: "Next",
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const OnBoarding2()));
-                            },
-                            buttonHeight: 40,
-                            buttonWidth: 350,
+                          SizedBox(
+                            height: 50,
+                            width: 380,
+                            child: PrimaryButton(
+                              buttonText: "Next",
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const OnBoarding2()));
+                              },
+                            ),
                           ),
                         ],
                       ),

@@ -18,6 +18,7 @@ class _ProjFeedbackState extends State<ProjFeedback> {
           centerTitle: true,
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
               "Your project is finished.",
@@ -33,18 +34,48 @@ class _ProjFeedbackState extends State<ProjFeedback> {
 
             /// 5 star in row
 
-            Row(
-              children:[
-                GestureDetector(
-                  onTap: () {
-                    selectedStar = !selectedStar;
-                  },
-                  child: selectedStar
-                  ? SvgPicture.asset("assets/star_outlined.svg")
-                  : SvgPicture.asset("assets/Star_filled.svg"),
-                ),
-              ]
-            ),
+            Row(children: [
+              GestureDetector(
+                onTap: () {
+                  selectedStar = !selectedStar;
+                },
+                child: selectedStar
+                    ? SvgPicture.asset("assets/star_outlined.svg")
+                    : SvgPicture.asset("assets/star_filled.svg"),
+              ),
+              GestureDetector(
+                onTap: () {
+                  selectedStar = !selectedStar;
+                },
+                child: selectedStar
+                    ? SvgPicture.asset("assets/star_outlined.svg")
+                    : SvgPicture.asset("assets/star_filled.svg"),
+              ),
+              GestureDetector(
+                onTap: () {
+                  selectedStar = !selectedStar;
+                },
+                child: selectedStar
+                    ? SvgPicture.asset("assets/star_outlined.svg")
+                    : SvgPicture.asset("assets/star_filled.svg"),
+              ),
+              GestureDetector(
+                onTap: () {
+                  selectedStar = !selectedStar;
+                },
+                child: selectedStar
+                    ? SvgPicture.asset("assets/star_outlined.svg")
+                    : SvgPicture.asset("assets/star_filled.svg"),
+              ),
+              GestureDetector(
+                onTap: () {
+                  selectedStar = !selectedStar;
+                },
+                child: selectedStar
+                    ? SvgPicture.asset("assets/star_outlined.svg")
+                    : SvgPicture.asset("assets/star_filled.svg"),
+              ),
+            ]),
 
             const Text(
               "What did you like about it?",

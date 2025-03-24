@@ -80,7 +80,7 @@ class _SignUpState extends State<SignUp> {
                             fontWeight: FontWeight.w700,
                             fontSize: 12),
                       ),
-                      Gap(8),
+                      const Gap(8),
                       PrimaryTextFormField(
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(
@@ -95,7 +95,7 @@ class _SignUpState extends State<SignUp> {
                             }
                             return null;
                           }),
-                      Gap(16),
+                      const Gap(16),
                       const Text(
                         "Email Address",
                         style: TextStyle(
@@ -103,7 +103,7 @@ class _SignUpState extends State<SignUp> {
                             fontWeight: FontWeight.w700,
                             fontSize: 12),
                       ),
-                      Gap(8),
+                      const Gap(8),
                       PrimaryTextFormField(
                         controller: emailController,
                         hintText: "Email Address",
@@ -119,7 +119,7 @@ class _SignUpState extends State<SignUp> {
                           return null;
                         },
                       ),
-                      Gap(16),
+                      const Gap(16),
                       const Text(
                         "Password",
                         style: TextStyle(
@@ -127,7 +127,7 @@ class _SignUpState extends State<SignUp> {
                             fontWeight: FontWeight.w700,
                             fontSize: 12),
                       ),
-                      Gap(8),
+                      const Gap(8),
                       PrimaryTextFormField(
                         controller: passwordController,
                         suffixIcon: IconButton(
@@ -136,7 +136,7 @@ class _SignUpState extends State<SignUp> {
                               showPass = !showPass;
                             });
                           },
-                          color: Color(0xFFC5C6CC),
+                          color: const Color(0xFFC5C6CC),
                           icon: showPass
                               ? const Icon(Icons.visibility_off_rounded)
                               : const Icon(Icons.visibility_rounded),
@@ -152,7 +152,7 @@ class _SignUpState extends State<SignUp> {
                           return null;
                         },
                       ),
-                      Gap(16),
+                      const Gap(16),
                       PrimaryTextFormField(
                         controller: confirmPasswordController,
                         suffixIcon: IconButton(
@@ -161,7 +161,7 @@ class _SignUpState extends State<SignUp> {
                               confirmPass = !confirmPass;
                             });
                           },
-                          color: Color(0xFFC5C6CC),
+                          color: const Color(0xFFC5C6CC),
                           icon: confirmPass
                               ? const Icon(Icons.visibility_off_rounded)
                               : const Icon(Icons.visibility_rounded),
@@ -178,7 +178,7 @@ class _SignUpState extends State<SignUp> {
                           return null;
                         },
                       ),
-                      Gap(24),
+                      const Gap(24),
                       Align(
                         alignment: Alignment.center,
                         child: Row(
@@ -193,7 +193,7 @@ class _SignUpState extends State<SignUp> {
                                   // side: BorderSide(color: Colors.black),
                                   borderRadius: BorderRadius.circular(5),
                                 ),
-                                side: BorderSide(
+                                side: const BorderSide(
                                     color: Color(0xFF808080),
                                     width: 2,
                                     strokeAlign: -1),
@@ -203,7 +203,7 @@ class _SignUpState extends State<SignUp> {
                                   });
                                 }),
                             RichText(
-                                text: TextSpan(children: [
+                                text: const TextSpan(children: [
                               TextSpan(
                                 text: "I've read and agree with the ",
                                 style: TextStyle(
@@ -221,14 +221,14 @@ class _SignUpState extends State<SignUp> {
                               TextSpan(
                                 text: "and the ",
                                 style: TextStyle(
-                                    color: const Color(0xFF808080),
+                                    color: Color(0xFF808080),
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400),
                               ),
                               TextSpan(
                                 text: "Privacy Policy",
                                 style: TextStyle(
-                                    color: const Color(0xFF006FFD),
+                                    color: Color(0xFF006FFD),
                                     fontSize: 12,
                                     fontWeight: FontWeight.w800),
                               ),
@@ -243,12 +243,14 @@ class _SignUpState extends State<SignUp> {
                           ],
                         ),
                       ),
-                      Gap(28.5),
-                      PrimaryButton(
-                        buttonHeight: 50,
-                        buttonWidth: 380,
-                        buttonText: "Sign Up",
-                        onTap: _signUp,
+                      const Gap(28.5),
+                      SizedBox(
+                        height: 50,
+                        width: 380,
+                        child: PrimaryButton(
+                          buttonText: "Sign Up",
+                          onTap: _signUp,
+                        ),
                       ),
                       const SizedBox(height: 20),
                       Row(children: [

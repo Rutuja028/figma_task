@@ -59,9 +59,9 @@ class _SignInState extends State<SignIn> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Align(
+                      const Align(
                         alignment: Alignment.centerLeft,
-                        child: const Text("Welcome!",
+                        child: Text("Welcome!",
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 24,
@@ -113,7 +113,7 @@ class _SignInState extends State<SignIn> {
                           icon: showPass
                               ? const Icon(Icons.visibility_off_rounded)
                               : const Icon(Icons.visibility_rounded),
-                          color: Color(0xFFC5C6CC),
+                          color: const Color(0xFFC5C6CC),
                           onPressed: () {
                             setState(() {
                               showPass = !showPass;
@@ -147,16 +147,18 @@ class _SignInState extends State<SignIn> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      PrimaryButton(
-                        buttonHeight: 50,
-                        buttonWidth: 380,
-                        buttonText: "Login",
-                        onTap: _signIn,
+                      SizedBox(
+                        height: 50,
+                        width: 380,
+                        child: PrimaryButton(
+                          buttonText: "Login",
+                          onTap: _signIn,
+                        ),
                       ),
                       const SizedBox(height: 20),
                       Row(
                         children: [
-                          Text(
+                          const Text(
                             "Not a member? ",
                             style: TextStyle(
                               color: Color(0xFF808080),

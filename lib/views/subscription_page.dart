@@ -150,18 +150,20 @@ class _SubscriptionState extends State<Subscription> {
                         );
                       }),
                 ),
-                PrimaryButton(
-                  buttonText: "Next",
-                  buttonHeight: 50,
-                  buttonWidth: 380,
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Settings(),
-                      ),
-                    );
-                  },
+                SizedBox(
+                  height: 50,
+                  width: 380,
+                  child: PrimaryButton(
+                    buttonText: "Next",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Settings(),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ]),
         ),
