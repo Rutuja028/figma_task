@@ -143,18 +143,50 @@ class _ProjFeedbackState extends State<ProjFeedback> {
 
             ///            ///TextButtons next to each other
 
-            Row(
-              children: List.generate(
-                4,
-                (i) {
+            Wrap(
+              children: Constants.improvedList.map(
+                (value) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 8,
-                      horizontal: 8,
+                    padding: const EdgeInsets.all(8),
+                    child: InkWell(
+                      onTap: () {
+                        if (selectedImproves.contains(value)) {
+                          // unselectIt
+                          selectedImproves.remove(value);
+                          setState(() {});
+                        } else {
+                          // selectIt
+                          selectedImproves.add(value);
+                          setState(() {});
+                        }
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 6, horizontal: 12),
+                        decoration: BoxDecoration(
+                          color: selectedImproves.contains(value)
+                              ? const Color(0xFF006FFD)
+                              : const Color(0xFFEAF2FF),
+                          shape: BoxShape.rectangle,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(16),
+                          ),
+                        ),
+                        child: Text(
+                          value,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 10,
+                            color: selectedImproves.contains(value)
+                                ? Colors.white
+                                : const Color(0xFF006FFD),
+                          ),
+                        ),
+                      ),
                     ),
                   );
                 },
-              ),
+              ).toList(),
             ),
             const Text(
               "Anything else?",
