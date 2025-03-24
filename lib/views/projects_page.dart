@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+
+import 'package:figma_task/views/feedback_page.dart';
+import '../components/elevated_button.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 
 class Projects extends StatefulWidget {
   const Projects({super.key});
@@ -47,6 +51,8 @@ class _ProjectsState extends State<Projects>
     return Scaffold(
       bottomNavigationBar: NavigationBar(
         elevation: 0,
+        indicatorShape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         onDestinationSelected: _onProjecTapped,
         selectedIndex: _selectedInd,
         backgroundColor: Colors.white,
@@ -79,7 +85,7 @@ class _ProjectsState extends State<Projects>
               label: 'Projects'),
           NavigationDestination(
               icon: SvgPicture.asset(
-                "assets/inbpx.svg",
+                "assets/inbox.svg",
                 colorFilter:
                     const ColorFilter.mode(Color(0xFFD4D6DD), BlendMode.srcIn),
               ),
@@ -104,13 +110,53 @@ class _ProjectsState extends State<Projects>
         ],
       ),
       appBar: AppBar(
-        bottom: TabBar(
-          controller: _myTabController,
-          tabs: const [
-            Text("To do"),
-            Text("In progress"),
-            Text("Finished"),
-          ],
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(39),
+          child: Container(
+            width: 343,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF8F9FE),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: TabBar(
+              indicator: const BoxDecoration(
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(12),
+                ),
+                color: Colors.white,
+              ),
+              indicatorSize: TabBarIndicatorSize.tab,
+              dividerHeight: 39,
+              splashBorderRadius: BorderRadius.circular(12),
+              dividerColor: const Color(0xFFF8F9FE),
+              controller: _myTabController,
+              tabs: const [
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                  child: Text(
+                    "To do",
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                  child: Text(
+                    "In progress",
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                  child: Text(
+                    "Finished",
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
         backgroundColor: Colors.white,
         centerTitle: true,
@@ -123,7 +169,7 @@ class _ProjectsState extends State<Projects>
         ),
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.search_outlined,
               color: Color(0xFF006FFD),
             ),
@@ -134,8 +180,10 @@ class _ProjectsState extends State<Projects>
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("project_image.png"),
+            Image.asset("assets/project_image.png", height: 100, width: 100),
+            const Gap(32),
             const Center(
               child: Text(
                 "Nothing here. For now.",
@@ -145,21 +193,32 @@ class _ProjectsState extends State<Projects>
                 ),
               ),
             ),
+            const Gap(8),
             const Center(
               child: Text(
-                "This is where you’ll find your finished projects.",
+                "This is where you’ll find your\nfinished projects.",
                 style: TextStyle(
                   fontSize: 14,
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w400,
                   color: Color(0xFF71727A),
                 ),
               ),
-            )
+            ),
+            const Gap(32),
+            PrimaryButton(
+              buttonText: 'Start a project',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ProjFeedback(),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
     );
   }
-
-  _ProjectsState newMethod() => this;
 }
