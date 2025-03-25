@@ -1,7 +1,9 @@
+import "package:figma_task/components/elevated_button.dart";
 import "package:figma_task/constants.dart";
 import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:gap/gap.dart";
+import '../components/elevated_button.dart';
 
 class ProjFeedback extends StatefulWidget {
   const ProjFeedback({super.key});
@@ -195,19 +197,36 @@ class _ProjFeedbackState extends State<ProjFeedback> {
             ),
 
             ////TextField
-            TextField(
-              controller: _anythingElseController,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(color: Color(0xFF8F9098))),
-                hintText: 'Tell us everything',
-                hintStyle: const TextStyle(
-                  fontSize: 12,
-                  color: Color(0xFF8F9098),
+
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+              height: 94,
+              width: 258,
+              child: TextField(
+                controller: _anythingElseController,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(color: Color(0xFF8F9098))),
+                  hintText: 'Tell us everything',
+                  hintStyle: const TextStyle(
+                    fontSize: 12,
+                    color: Color(0xFF8F9098),
+                  ),
                 ),
               ),
-            )
+            ),
+            SizedBox(
+              height: 40,
+              width: 350,
+              child: PrimaryButton(
+                buttonText: "Submit",
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Container()));
+                },
+              ),
+            ),
 
             ///primary button
           ],
