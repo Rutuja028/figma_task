@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class PrimaryButton extends StatelessWidget {
   final void Function()? onTap;
+  final EdgeInsetsGeometry? padding;
   final String buttonText;
   const PrimaryButton({
     super.key,
+    this.padding,
     this.onTap,
     required this.buttonText,
   });
@@ -14,6 +16,8 @@ class PrimaryButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
+        elevation: 0,
+        padding: padding,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         backgroundColor: const Color(0xFF006FFD),
         foregroundColor: Colors.white,
