@@ -11,6 +11,7 @@ class ProjFeedback extends StatefulWidget {
 }
 
 class _ProjFeedbackState extends State<ProjFeedback> {
+  TextEditingController _anythingElseController = TextEditingController();
   int rating = 0;
 
   List<String> selectedLikes = [];
@@ -194,7 +195,20 @@ class _ProjFeedbackState extends State<ProjFeedback> {
             ),
 
             ////TextField
-            ///
+            TextField(
+              controller: _anythingElseController,
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: Color(0xFF8F9098))),
+                hintText: 'Tell us everything',
+                hintStyle: const TextStyle(
+                  fontSize: 12,
+                  color: Color(0xFF8F9098),
+                ),
+              ),
+            )
+
             ///primary button
           ],
         ));
