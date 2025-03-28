@@ -19,12 +19,14 @@ class _FilterPageState extends State<FilterPage> {
         backgroundColor: Colors.white,
         leading: TextButton(
           onPressed: () {},
-          child: const Text(
-            "Cancel",
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: Color(0xFF006FFD),
+          child: const Center(
+            child: Text(
+              "Cancel",
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF006FFD),
+              ),
             ),
           ),
         ),

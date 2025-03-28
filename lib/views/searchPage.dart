@@ -36,10 +36,10 @@ class _SearchPage1state extends State<SearchPage1> {
         elevation: 0,
         title: SearchBar(
           backgroundColor:
-              WidgetStateProperty.all<Color>(const Color(0xFFF8F9FE)),
+              MaterialStatePropertyAll<Color>(const Color(0xFFF8F9FE)),
           // elevation:,
           hintText: 'Search',
-          elevation: WidgetStateProperty.all<double>(0),
+          elevation: MaterialStatePropertyAll<double>(0),
           leading: const Icon(Icons.search_rounded),
           controller: _searchController,
         ),

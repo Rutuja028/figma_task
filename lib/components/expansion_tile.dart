@@ -21,6 +21,16 @@ class _FilterExpansionTileState extends State<FilterExpansionTile> {
       tilePadding: const EdgeInsets.all(0),
       title: Text(widget.filterTitle),
       //
+      collapsedShape: const BeveledRectangleBorder(
+        side: BorderSide(
+          color: Color(0xFFD4D6DD),
+        ),
+      ), // medium = E8E9F1
+      shape: const BeveledRectangleBorder(
+        side: BorderSide(
+          color: Color(0xFFD4D6DD),
+        ),
+      ),
       trailing: selectedValues.isEmpty
           ? null
           : Container(
