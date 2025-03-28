@@ -1,8 +1,11 @@
+import 'package:figma_task/components/elevated_button.dart';
 import 'package:figma_task/components/expansion_tile.dart';
+import 'package:figma_task/components/price_range_expansion_tile.dart';
+import 'package:figma_task/views/searchPage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:figma_task/constants.dart';
-import 'package:flutter/services.dart';
+import 'package:gap/gap.dart';
 
 class FilterPage extends StatefulWidget {
   const FilterPage({super.key});
@@ -15,18 +18,36 @@ class _FilterPageState extends State<FilterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(16),
+        child: SizedBox(
+          height: 48,
+          width: 380,
+          child: PrimaryButton(
+            buttonText: "Apply Filters",
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SearchPage1(),
+                ),
+              );
+            },
+          ),
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: TextButton(
           onPressed: () {},
-          child: const Center(
-            child: Text(
-              "Cancel",
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-                color: Color(0xFF006FFD),
-              ),
+          style: TextButton.styleFrom(padding: EdgeInsets.zero),
+          child: const Text(
+            "Cancel",
+            maxLines: 1,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: Color(0xFF006FFD),
             ),
           ),
         ),
@@ -59,11 +80,11 @@ class _FilterPageState extends State<FilterPage> {
           children: const [
             FilterExpansionTile(
               filterTitle: "Category",
-              filterValues: Constants.colorFilters,
+              filterValues: Constants.categoryFiltersList,
             ),
-            FilterExpansionTile(
-              filterTitle: "Price Range",
-              filterValues: Constants.priceList,
+            RangeExpansionTile(
+              rangeTitle: "Price Range",
+              // rangeValues: Constants.priceList,
             ),
             FilterExpansionTile(
               filterTitle: "Color",

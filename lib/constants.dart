@@ -19,7 +19,13 @@ class Constants {
     "8090rs",
     "15000rs",
   ];
-  static const List<String> categoryFiltersList = [];
+  static const List<String> categoryFiltersList = [
+    "Formal",
+    "Informal",
+    "Sports",
+    "Casuals",
+    "Crocs",
+  ];
   static const List<String> colorFilters = [
     "Black",
     "White",

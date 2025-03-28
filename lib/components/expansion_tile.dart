@@ -18,17 +18,19 @@ class _FilterExpansionTileState extends State<FilterExpansionTile> {
   Widget build(BuildContext context) {
     return ExpansionTile(
       onExpansionChanged: (isExpansionTrue) {},
+      childrenPadding: const EdgeInsets.only(bottom: 10),
       tilePadding: const EdgeInsets.all(0),
       title: Text(widget.filterTitle),
-      //
-      collapsedShape: const BeveledRectangleBorder(
-        side: BorderSide(
+      collapsedShape: const Border.symmetric(
+        horizontal: BorderSide(
           color: Color(0xFFD4D6DD),
+          width: 0,
         ),
-      ), // medium = E8E9F1
-      shape: const BeveledRectangleBorder(
-        side: BorderSide(
+      ),
+      shape: const Border.symmetric(
+        horizontal: BorderSide(
           color: Color(0xFFD4D6DD),
+          width: 0,
         ),
       ),
       trailing: selectedValues.isEmpty
@@ -46,7 +48,6 @@ class _FilterExpansionTileState extends State<FilterExpansionTile> {
                 style: const TextStyle(color: Colors.white),
               )),
             ),
-
       expandedAlignment: Alignment.centerLeft,
       children: [
         Wrap(
