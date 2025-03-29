@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:figma_task/views/e_commerce_pg1.dart';
 //import 'package:figma_task/views/onboarding_page1.dart';
 //import 'package:figma_task/views/onboarding_page2.dart';
 import 'package:figma_task/views/filter_page.dart';
@@ -15,20 +16,21 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          fontFamily: 'Inter',
-        ),
-        //home: const SignIn(),
-        debugShowCheckedModeBanner: false,
-        home: const FilterPage()
-        //home: const ProjFeedback(),
-        //home: Projects(),
-        //home: const Settings(),
-        //home: const Subscription(),
-        //home: const OnBoarding2(),
-        //home: OnBoarding(),
-        //home: PersonalizePage(),
-        );
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        fontFamily: 'Inter',
+      ),
+      //home: const SignIn(),
+      debugShowCheckedModeBanner: false,
+      home: const ECommercePg1(),
+      //home: const FilterPage()
+      //home: const ProjFeedback(),
+      //home: Projects(),
+      //home: const Settings(),
+      //home: const Subscription(),
+      //home: const OnBoarding2(),
+      //home: OnBoarding(),
+      //home: PersonalizePage(),
+    );
   }
 }
