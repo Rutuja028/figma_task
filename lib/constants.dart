@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Constants {
   static const List<String> likeList = [
     "EASY TO USE",
@@ -5,6 +7,19 @@ class Constants {
     "HELPFUL",
     "CONVINIENT",
     "LOOKS GCategoryOOD",
+  ];
+  static const List<String> sizeChips = [
+    "S",
+    "M",
+    "X",
+    "XL",
+    "XXL",
+  ];
+  static const List<Color> colorChips = [
+    Color(0xFF1F2024),
+    Color(0xFF71727A),
+    Color(0xFFC5C6CC),
+    Color(0xFFE8E9F1),
   ];
   static const List<String> improvedList = [
     "COULD HAVE MORE COMPONENTS",

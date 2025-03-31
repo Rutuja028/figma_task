@@ -1,3 +1,4 @@
+import 'package:figma_task/views/e_commerce_pg2.dart';
 import 'package:flutter/material.dart';
 
 import 'package:figma_task/views/e_commerce_pg1.dart';
@@ -22,7 +23,8 @@ class MainApp extends StatelessWidget {
       ),
       //home: const SignIn(),
       debugShowCheckedModeBanner: false,
-      home: const ECommercePg1(),
+      home: const ECommercePg2(),
+      // home: const ECommercePg1(),
       //home: const FilterPage()
       //home: const ProjFeedback(),
       //home: Projects(),

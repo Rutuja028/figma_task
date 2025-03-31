@@ -55,51 +55,68 @@ class _ECommercePg1State extends State {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: NavigationBar(
-          elevation: 0,
-          //  onDestinationSelected: (){},
-          //  selectedIndex: _selectedInd,
-          backgroundColor: Colors.white,
-          indicatorColor: Colors.white,
-          destinations: <Widget>[
-            NavigationDestination(
-              icon: SvgPicture.asset(
-                "assets/Icon.svg",
-                colorFilter:
-                    const ColorFilter.mode(Color(0xFFD4D6DD), BlendMode.srcIn),
-              ),
-              selectedIcon: SvgPicture.asset(
-                "assets/Icon.svg",
-                colorFilter:
-                    const ColorFilter.mode(Color(0xFF006FFD), BlendMode.srcIn),
-              ),
-              label: 'Chats',
+        elevation: 0,
+        //  onDestinationSelected: (){},
+        //  selectedIndex: _selectedInd,
+        backgroundColor: Colors.white,
+        indicatorColor: Colors.white,
+        destinations: <Widget>[
+          NavigationDestination(
+            icon: SvgPicture.asset(
+              "assets/explore.svg",
+              colorFilter:
+                  const ColorFilter.mode(Color(0xFFD4D6DD), BlendMode.srcIn),
             ),
-            NavigationDestination(
-                icon: SvgPicture.asset(
-                  "assets/friends.svg",
-                  colorFilter: const ColorFilter.mode(
-                      Color(0xFFD4D6DD), BlendMode.srcIn),
-                ),
-                selectedIcon: SvgPicture.asset(
-                  "assets/friends.svg",
-                  colorFilter: const ColorFilter.mode(
-                      Color(0xFF006FFD), BlendMode.srcIn),
-                ),
-                label: 'Friends'),
-            NavigationDestination(
-                icon: SvgPicture.asset(
-                  "assets/settings.svg",
-                  colorFilter: const ColorFilter.mode(
-                      Color(0xFFD4D6DD), BlendMode.srcIn),
-                ),
-                selectedIcon: SvgPicture.asset(
-                  "assets/settings.svg",
-                  colorFilter: const ColorFilter.mode(
-                      Color(0xFF006FFD), BlendMode.srcIn),
-                ),
-                label: 'Settings')
-          ]),
+            selectedIcon: SvgPicture.asset(
+              "assets/explore.svg",
+              colorFilter:
+                  const ColorFilter.mode(Color(0xFF006FFD), BlendMode.srcIn),
+            ),
+            label: 'Explore',
+          ),
+          NavigationDestination(
+            icon: SvgPicture.asset(
+              "assets/categories.svg",
+              colorFilter:
+                  const ColorFilter.mode(Color(0xFFD4D6DD), BlendMode.srcIn),
+            ),
+            selectedIcon: SvgPicture.asset(
+              "assets/categories.svg",
+              colorFilter:
+                  const ColorFilter.mode(Color(0xFF006FFD), BlendMode.srcIn),
+            ),
+            label: 'Categories',
+          ),
+          NavigationDestination(
+            icon: SvgPicture.asset(
+              "assets/store.svg",
+              colorFilter:
+                  const ColorFilter.mode(Color(0xFFD4D6DD), BlendMode.srcIn),
+            ),
+            selectedIcon: SvgPicture.asset(
+              "assets/store.svg",
+              colorFilter:
+                  const ColorFilter.mode(Color(0xFF006FFD), BlendMode.srcIn),
+            ),
+            label: 'Stores',
+          ),
+          NavigationDestination(
+            icon: SvgPicture.asset(
+              "assets/friends.svg",
+              colorFilter:
+                  const ColorFilter.mode(Color(0xFFD4D6DD), BlendMode.srcIn),
+            ),
+            selectedIcon: SvgPicture.asset(
+              "assets/friends.svg",
+              colorFilter:
+                  const ColorFilter.mode(Color(0xFF006FFD), BlendMode.srcIn),
+            ),
+            label: 'Profile',
+          ),
+        ],
+      ),
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {},

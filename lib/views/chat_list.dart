@@ -50,9 +50,9 @@ class _ChatListState extends State<ChatList> {
   ];
 
   List<ChatBottomNavigate> pageList = [
-    ChatBottomNavigate(ChatList()),
+    ChatBottomNavigate(const ChatList()),
     ChatBottomNavigate(Container()),
-    ChatBottomNavigate(Settings()),
+    ChatBottomNavigate(const Settings()),
   ];
 
   @override
@@ -109,7 +109,7 @@ class _ChatListState extends State<ChatList> {
             leading: TextButton(
               style: TextButton.styleFrom(
                 backgroundColor: Colors.white,
-                foregroundColor: Color(0xFF006FFD),
+                foregroundColor: const Color(0xFF006FFD),
               ),
               child: const Text("Edit",
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
@@ -130,7 +130,7 @@ class _ChatListState extends State<ChatList> {
                 icon: SvgPicture.asset(
                   "assets/chat-edit.svg",
                   colorFilter:
-                      ColorFilter.mode(Color(0xFF006FFD), BlendMode.dst),
+                      const ColorFilter.mode(Color(0xFF006FFD), BlendMode.dst),
                 ),
               )
             ]),
@@ -140,11 +140,12 @@ class _ChatListState extends State<ChatList> {
               height: 50,
               width: 380,
               child: SearchBar(
-                elevation: MaterialStatePropertyAll(0),
-                backgroundColor: MaterialStatePropertyAll(Color(0xFFF8F9FE)),
+                elevation: const WidgetStatePropertyAll(0),
+                backgroundColor:
+                    const WidgetStatePropertyAll(Color(0xFFF8F9FE)),
                 leading: IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.search,
                   ),
                 ),
