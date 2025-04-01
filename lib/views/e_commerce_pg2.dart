@@ -1,62 +1,26 @@
+import 'package:figma_task/models/e_com_model.dart';
+import 'package:figma_task/views/your_bag_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:figma_task/components/elevated_button.dart';
 import 'package:figma_task/constants.dart';
-import 'package:figma_task/views/searchPage.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
 class ECommercePg2 extends StatefulWidget {
-  const ECommercePg2({super.key});
+  final ProductModel model;
+  const ECommercePg2({super.key, required this.model});
 
   @override
-  State createState() => _ECommercePg2State();
+  State<ECommercePg2> createState() => _ECommercePg2State();
 }
 
-class _ECommercePg2State extends State {
+class _ECommercePg2State extends State<ECommercePg2> {
   int pageIndex = 0;
   bool isLiked = false;
   Color? selectBadge;
   List<String> selectedSizeChips = [];
-  List<Map<String, dynamic>> allProducts = [
-    {
-      'name': 'Amazing T-Shirt',
-      'price': '\u{20AC} ${12}',
-      'description':
-          'The perfect T-shirt for when you want to feel comfortable but still stylish.Made of 100% cotton fabric in four colours. Perfect for the warmest days.'
-    },
-    {
-      'name': 'Fabulous Pants',
-      'price': '\u{20AC} ${15}',
-      'description':
-          'Stylish and comfortable, perfect for any occasion. Made from premium fabric for a sleek look.'
-    },
-    {
-      'name': 'Fantastic Jacket',
-      'price': '\u{20AC} ${17}',
-      'description':
-          'A modern jacket with a perfect fit, great for layering. Lightweight yet warm.'
-    },
-    {
-      'name': 'Spectacular Dress',
-      'price': '\u{20AC} ${12}',
-      'description':
-          'A versatile and elegant dress that complements any style. Flows beautifully with every step.'
-    },
-    {
-      'name': 'Elegant Shoes',
-      'price': '\u{20AC} ${18}',
-      'description':
-          'Chic and comfortable footwear designed for all-day wear. Enhances any outfit effortlessly.'
-    },
-    {
-      'name': 'Classic Crop Top',
-      'price': '\u{20AC} ${20}',
-      'description':
-          'A trendy and breathable crop top, ideal for casual and stylish looks. Perfect for warm days.'
-    },
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +35,7 @@ class _ECommercePg2State extends State {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const SearchPage1(),
+                  builder: (context) => const YourBag(),
                 ),
               );
             },
@@ -148,9 +112,9 @@ class _ECommercePg2State extends State {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  "Amazing T-Shirt",
-                  style: TextStyle(
+                Text(
+                  widget.model.name,
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w800,
                   ),
@@ -161,11 +125,6 @@ class _ECommercePg2State extends State {
                       isLiked = !isLiked;
                     });
                   },
-                  // icon: Icon(
-                  //   isLiked
-                  //       ? Icons.favorite_outlined
-                  //       : Icons.favorite_outline_rounded,
-                  // ),
                   icon: isLiked
                       ? const Icon(Icons.favorite_outlined, color: Colors.red)
                       : const Icon(Icons.favorite_outline_rounded),
@@ -173,14 +132,17 @@ class _ECommercePg2State extends State {
               ],
             ),
             const Gap(8),
-            const Text(
-              '\u{20AC} ${12}',
-              style: TextStyle(fontSize: 16),
+            Text(
+              widget.model.price,
+              // '\u{20AC} ${12}',
+              style: const TextStyle(
+                fontSize: 16,
+              ),
             ),
             const Gap(24),
-            const Text(
-              "The perfect T-shirt for when you want to feel comfortable but still stylish. Amazing for all ocasions. Made of 100% cotton fabric in four colours. Its modern style gives a lighter look to the outfit. Perfect for the warmest days.",
-              style: TextStyle(
+            Text(
+              widget.model.description,
+              style: const TextStyle(
                 fontSize: 12,
                 color: Color(0xFF71727A),
               ),
@@ -252,16 +214,6 @@ class _ECommercePg2State extends State {
                         setState(() {
                           selectBadge = value;
                         });
-
-                        // if (selectedSizeChips.contains(value)) {
-                        //   // unselectIt
-                        //   selectedSizeChips.remove(value);
-                        //   setState(() {});
-                        // } else {
-                        //   // selectIt
-                        //   selectedSizeChips.add(value);
-                        //   setState(() {});
-                        // }
                       },
                       child: selectBadge == value
                           ? Badge(
@@ -295,6 +247,7 @@ class _ECommercePg2State extends State {
                 },
               ).toList(),
             ),
+            const Gap(24),
           ],
         ),
       ),
