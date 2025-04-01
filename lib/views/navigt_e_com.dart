@@ -46,13 +46,10 @@ class _EcomBottomNavBarState extends State<EcomBottomNavBar> {
             //     BlendMode.srcIn,
             //   ),
             // ),
-            // selectedIcon: SvgPicture.asset(
-            //   "assets/explore.svg",
-            //   colorFilter: const ColorFilter.mode(
-            //     Color(0xFF006FFD),
-            //     BlendMode.srcIn,
-            //   ),
-            // ),
+            selectedIcon: Icon(
+              Icons.explore,
+              color: Color(0xFF006FFD),
+            ),
             label: 'Explore',
           ),
           const NavigationDestination(
@@ -64,13 +61,10 @@ class _EcomBottomNavBarState extends State<EcomBottomNavBar> {
             //     BlendMode.srcIn,
             //   ),
             // ),
-            // selectedIcon: SvgPicture.asset(
-            //   "assets/categories.svg",
-            //   colorFilter: const ColorFilter.mode(
-            //     Color(0xFF006FFD),
-            //     BlendMode.srcIn,
-            //   ),
-            // ),
+            selectedIcon: Icon(
+              Icons.category,
+              color: Color(0xFF006FFD),
+            ),
             label: 'Categories',
           ),
           const NavigationDestination(
@@ -82,13 +76,10 @@ class _EcomBottomNavBarState extends State<EcomBottomNavBar> {
             //     BlendMode.srcIn,
             //   ),
             // ),
-            // selectedIcon: SvgPicture.asset(
-            //   "assets/store.svg",
-            //   colorFilter: const ColorFilter.mode(
-            //     Color(0xFF006FFD),
-            //     BlendMode.srcIn,
-            //   ),
-            // ),
+            selectedIcon: Icon(
+              Icons.store,
+              color: Color(0xFF006FFD),
+            ),
             label: 'Stores',
           ),
           NavigationDestination(
