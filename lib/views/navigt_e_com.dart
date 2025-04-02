@@ -13,9 +13,9 @@ class EcomBottomNavBar extends StatefulWidget {
 class _EcomBottomNavBarState extends State<EcomBottomNavBar> {
   List<Widget> pageList = [
     const ECommercePg1(),
-    const Center(child: Text("Explore Page")),
-    const Center(child: Text("Categories Page")),
-    const Center(child: Text("Store Page")),
+    const Center(child: Text(" Categories Page")),
+    const Center(child: Text(" Store Page")),
+    const Center(child: Text(" Profile Page")),
   ];
 
   int _selectedInd = 0;
@@ -38,14 +38,10 @@ class _EcomBottomNavBarState extends State<EcomBottomNavBar> {
         indicatorColor: Colors.white,
         destinations: <Widget>[
           const NavigationDestination(
-            icon: Icon(Icons.explore),
-            // icon: SvgPicture.asset(
-            //   "assets/explore.svg",
-            //   colorFilter: const ColorFilter.mode(
-            //     Color(0xFFD4D6DD),
-            //     BlendMode.srcIn,
-            //   ),
-            // ),
+            icon: Icon(
+              Icons.explore,
+              color: Color(0xFFD4D6DD),
+            ),
             selectedIcon: Icon(
               Icons.explore,
               color: Color(0xFF006FFD),
@@ -53,14 +49,10 @@ class _EcomBottomNavBarState extends State<EcomBottomNavBar> {
             label: 'Explore',
           ),
           const NavigationDestination(
-            icon: Icon(Icons.category),
-            // icon: SvgPicture.asset(
-            //   "assets/categories.svg",
-            //   colorFilter: const ColorFilter.mode(
-            //     Color(0xFFD4D6DD),
-            //     BlendMode.srcIn,
-            //   ),
-            // ),
+            icon: Icon(
+              Icons.category,
+              color: Color(0xFFD4D6DD),
+            ),
             selectedIcon: Icon(
               Icons.category,
               color: Color(0xFF006FFD),
@@ -68,14 +60,10 @@ class _EcomBottomNavBarState extends State<EcomBottomNavBar> {
             label: 'Categories',
           ),
           const NavigationDestination(
-            icon: Icon(Icons.store),
-            // icon: SvgPicture.asset(
-            //   "assets/store.svg",
-            //   colorFilter: const ColorFilter.mode(
-            //     Color(0xFFD4D6DD),
-            //     BlendMode.srcIn,
-            //   ),
-            // ),
+            icon: Icon(
+              Icons.store,
+              color: Color(0xFFD4D6DD),
+            ),
             selectedIcon: Icon(
               Icons.store,
               color: Color(0xFF006FFD),

@@ -1,9 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:figma_task/models/e_com_model.dart';
 import 'package:figma_task/views/e_commerce_pg2.dart';
-import 'package:figma_task/views/your_bag_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
 class ECommercePg1 extends StatefulWidget {

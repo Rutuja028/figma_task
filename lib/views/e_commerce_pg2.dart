@@ -10,7 +10,10 @@ import 'package:gap/gap.dart';
 
 class ECommercePg2 extends StatefulWidget {
   final ProductModel model;
-  const ECommercePg2({super.key, required this.model});
+  const ECommercePg2({
+    super.key,
+    required this.model,
+  });
 
   @override
   State<ECommercePg2> createState() => _ECommercePg2State();

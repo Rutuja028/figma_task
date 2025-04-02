@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 // import 'package:figma_task/views/navigate_chat_and_setting.dart';
-import 'package:figma_task/views/navigt_e_com.dart';
+import 'package:figma_task/views/your_bag_page.dart';
+// import 'package:figma_task/views/navigt_e_com.dart';
 // import 'package:figma_task/views/chat_list.dart';
 // import 'package:figma_task/views/e_commerce_pg1.dart';
 // import 'package:figma_task/views/e_commerce_pg2.dart';
@@ -23,12 +24,13 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         fontFamily: 'Inter',
-        navigationBarTheme: NavigationBarThemeData(
+        navigationBarTheme: const NavigationBarThemeData(
           backgroundColor: Colors.white,
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: const EcomBottomNavBar(),
+      home: const YourBag(),
+      //home: const EcomBottomNavBar(),
       //home: const ChatAndSettingNavigation(),
       //home: const SignIn(),
       //home: const ECommercePg2(),
