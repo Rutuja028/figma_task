@@ -1,4 +1,6 @@
-import 'package:figma_task/views/checkout_page.dart';
+// import 'package:figma_task/views/checkout_page.dart';
+import 'package:figma_task/views/personal_chat_page.dart';
+
 // import 'package:figma_task/views/navigate_chat_and_setting.dart';
 // import 'package:figma_task/views/your_bag_page.dart';
 // import 'package:figma_task/views/navigt_e_com.dart';
@@ -30,7 +32,7 @@ class MainApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: const CheckoutPage(),
+      home: const PersonalChatPage(),
       //home: const EcomBottomNavBar(),
       //home: const ChatAndSettingNavigation(),
       //home: const SignIn(),
