@@ -1,4 +1,5 @@
 // import 'package:figma_task/views/checkout_page.dart';
+import 'package:figma_task/views/googlemaps.dart';
 import 'package:figma_task/views/personal_chat_page.dart';
 
 // import 'package:figma_task/views/navigate_chat_and_setting.dart';
@@ -32,7 +33,8 @@ class MainApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: const PersonalChatPage(),
+      home: const MapScreen(),
+      //home: const PersonalChatPage(),
       //home: const EcomBottomNavBar(),
       //home: const ChatAndSettingNavigation(),
       //home: const SignIn(),
