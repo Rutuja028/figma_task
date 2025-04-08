@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:figma_task/components/elevated_button.dart';
 import 'package:figma_task/models/marker_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -23,12 +25,13 @@ class MapScreenState extends State<MapScreen> {
     zoom: 14.4746,
   );
 
-  static const CameraPosition _kLake = CameraPosition(
-    bearing: 192.8334901395799,
-    target: LatLng(18.53049527920011, 73.82897971465682),
-    tilt: 59.440717697143555,
-    zoom: 21.151926040649414,
-  );
+///////////////FOR FLOATING ACTION BUTTON
+  // static const CameraPosition _kLake = CameraPosition(
+  //   bearing: 192.8334901395799,
+  //   target: LatLng(18.53049527920011, 73.82897971465682),
+  //   tilt: 59.440717697143555,
+  //   zoom: 21.151926040649414,
+  // );
 
   void _showModalBottomSheet(MarkerModel element) {
     showModalBottomSheet(
@@ -46,6 +49,7 @@ class MapScreenState extends State<MapScreen> {
                 children: [
                   CarouselSlider(
                     options: CarouselOptions(
+                      // aspectRatio: 1,
                       onPageChanged: (ind, _) {
                         setState(() {
                           pageIndex = ind;
@@ -79,6 +83,14 @@ class MapScreenState extends State<MapScreen> {
                     ],
                   ),
                   Positioned(
+                    top: 5,
+                    left: 0,
+                    right: 0,
+                    child: SvgPicture.asset(
+                      "assets/bottomsheet_handle.svg",
+                    ),
+                  ),
+                  Positioned(
                     bottom: 15,
                     left: 0,
                     right: 0,
@@ -108,17 +120,17 @@ class MapScreenState extends State<MapScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "Great Apartment",
-                      style: TextStyle(
+                    Text(
+                      element.title,
+                      style: const TextStyle(
                         fontWeight: FontWeight.w800,
                         fontSize: 16,
                       ),
                     ),
                     const Gap(4),
-                    const Text(
-                      "€ 150.00 ",
-                      style: TextStyle(
+                    Text(
+                      element.price,
+                      style: const TextStyle(
                         fontWeight: FontWeight.w800,
                         fontSize: 14,
                         color: Color(0xFF71727A),
@@ -134,9 +146,9 @@ class MapScreenState extends State<MapScreen> {
                       ),
                     ),
                     const Gap(8),
-                    const Text(
-                      "Perfect flat for 4 people. Peaceful and good location, close to bus stops and many restaurants. ",
-                      style: TextStyle(
+                    Text(
+                      element.about,
+                      style: const TextStyle(
                         fontWeight: FontWeight.w800,
                         fontSize: 12,
                         color: Color(0xFF71727A),
@@ -152,15 +164,67 @@ class MapScreenState extends State<MapScreen> {
                     ),
                     const Gap(8),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Image.asset(
                           "assets/bottomSheetProfile.png",
                         ),
+                        const Gap(4.5),
+                        Column(
+                          children: [
+                            Text(
+                              element.hostedBy,
+                              style: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            const Gap(2),
+                            Row(
+                              children: [
+                                SvgPicture.asset(
+                                  "assets/star_filled.svg",
+                                  width: 12,
+                                ),
+                                const Gap(2),
+                                const Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    "4.5",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Color(0xFF71727A),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ],
+                    ),
+                    const Gap(24),
+                    Container(
+                      width: double.infinity,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: const Color(0xFF006FFD),
+                        ),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor: Colors.white,
+                            foregroundColor: const Color(0xFF006FFD)),
+                        child: const Text("See details"),
+                      ),
                     )
                   ],
                 ),
-              )
+              ),
             ],
           ),
         );
@@ -168,16 +232,16 @@ class MapScreenState extends State<MapScreen> {
     );
   }
 
-  @override
-  void initState() {
-    super.initState();
+  // @override
+  // void initState() {
+  //   super.initState();
 
-    for (int i = 0; i < list.length; i++) {
-      list[i].marker.onTap = () {
-        _showModalBottomSheet(list[i]);
-      };
-    }
-  }
+  //   for (int i = 0; i < list.length; i++) {
+  //     list[i].onTap = () {
+  //       _showModalBottomSheet(list[i]);
+  //     };
+  //   }
+  // }
 
   List<MarkerModel> list = [
     MarkerModel(
@@ -186,87 +250,73 @@ class MapScreenState extends State<MapScreen> {
       hostedBy: 'Karen Roe',
       about:
           'Perfect flat for 4 people. Peaceful and good location, close to bus stops and many restaurants. ',
-      marker:  Marker(
-        markerId: MarkerId('place1'),
-        onTap: (){},
-        position: LatLng(
-          18.530060649254924,
-          73.83224781444254,
-        ),
+      markerId: const MarkerId('place1'),
+      // onTap: () {},
+      position: const LatLng(
+        18.530667161804125,
+        73.82901820999429,
       ),
     ),
     MarkerModel(
-      title: 'Great Apartment',
+      title: 'Apartment',
       price: '€ 150.00 ',
-      hostedBy: 'Karen Roe',
-      about:
-          'Perfect flat for 4 people. Peaceful and good location, close to bus stops and many restaurants. ',
-      marker:  Marker(
-        // onTap: () => _showModalBottomSheet(),
-        markerId: MarkerId('place2'),
-        position: LatLng(
-          18.53256743026    73.82923014724803,
-        ),
+      hostedBy: 'Rutuja Shinde',
+      about: 'good location, many restaurants. ',
+
+      // onTap: () {
+      // },
+      markerId: const MarkerId('place2'),
+      position: const LatLng(
+        18.527693242423155,
+        73.84321330549294,
       ),
     ),
     MarkerModel(
       title: 'Huge Apartment',
       price: '€ 160.00 ',
-      hostedBy: 'Karen Roe',
-      about:
-          'Perfect flat for 4 people. Peaceful and good location, close to bus stops and many restaurants. ',
-      marker:  Marker(
-        // onTap: () => _showModalBottomSheet(),
-        markerId: MarkerId('place3'),
-        position: LatLng(
-          18.539619925718593,
-          73.82797358889854,
-        ),
+      hostedBy: 'Steve Jobs',
+      about: 'close to bus stops ',
+      // onTap: () {}, //_showModalBottomSheet(),
+      markerId: const MarkerId('place3'),
+      position: const LatLng(
+        18.52195093109692,
+        73.82182599287606,
       ),
     ),
     MarkerModel(
       title: 'Lavish Apartment',
       price: '€ 130.00 ',
-      hostedBy: 'Karen Roe',
-      about:
-          'Perfect flat for 4 people. Peaceful and good location, close to bus stops and many restaurants. ',
-      marker:  Marker(
-        // onTap: () => _showModalBottomSheet(),
-        markerId: MarkerId('place4'),
-        position: LatLng(
-          18.51834290652452,
-          73.83394893954366,
-        ),
+      hostedBy: 'ABC XYZ',
+      about: 'Perfect flat, close to many restaurants. ',
+      // onTap: () {}, //_showModalBottomSheet(),
+      markerId: const MarkerId('place4'),
+      position: const LatLng(
+        18.528160505809332,
+        73.82378121954946,
       ),
     ),
     MarkerModel(
       title: 'My Apartment',
       price: '€ 250.00 ',
-      hostedBy: 'Karen Roe',
-      about:
-          'Perfect flat for 4 people. Peaceful and good location, close to bus stops and many restaurants. ',
-      marker:  Marker(
-        // onTap: () => _showModalBottomSheet(),
-        markerId: MarkerId('place5'),
-        position: LatLng(
-          18.521871696491363,
-          73.82172312699228,
-        ),
+      hostedBy: 'PQR TUV',
+      about: 'for 4 people. Peaceful ',
+      // onTap: () {}, //_showModalBottomSheet(),
+      markerId: const MarkerId('place5'),
+      position: const LatLng(
+        18.51786394357736,
+        73.81276912103588,
       ),
     ),
     MarkerModel(
       title: 'Your Apartment',
       price: '€ 180.00 ',
-      hostedBy: 'Karen Roe',
-      about:
-          'Perfect flat for 4 people. Peaceful and good location, close to bus stops and many restaurants. ',
-      marker:  Marker(
-        // onTap: () => _showModalBottomSheet(),
-        markerId: MarkerId('place2'),
-        position: LatLng(
-          18.530060649254924,
-          73.83224781444254,
-        ),
+      hostedBy: 'QWE RTY',
+      about: 'Perfect flat and good location . ',
+      // onTap: () {}, //_showModalBottomSheet(),
+      markerId: const MarkerId('place6'),
+      position: const LatLng(
+        18.549883513198132,
+        73.83902274125121,
       ),
     ),
   ];
@@ -275,22 +325,60 @@ class MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.arrow_back_ios_rounded,
+              color: Color(0xFF006FFD),
+            ),
+          ),
+          title: const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Recife",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              Text(
+                "Mar 12 – Mar 15",
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Color(0xFF71727A),
+                ),
+              ),
+            ],
+          ),
+          actionsPadding: const EdgeInsets.all(8),
+          actions: const [
+            Text(
+              "291 results",
+              style: TextStyle(
+                fontSize: 12,
+                color: Color(0xFF71727A),
+              ),
+            )
+          ],
+        ),
         body: SafeArea(
           child: Stack(
             children: [
               GoogleMap(
                 markers: list
-                    .map((e) {
-                      e.onTap = () {
-                        _showModalBottomSheet(e);
-                      };
-                      return e.marker;
-                    })
+                    .map((e) => Marker(
+                          icon: BitmapDescriptor.defaultMarkerWithHue(
+                              BitmapDescriptor.hueAzure),
+                          markerId: e.markerId,
+                          position: e.position!,
+                          onTap: () => _showModalBottomSheet(e),
+                        ))
                     .toList()
                     .toSet(),
                 mapType: MapType.normal,
                 liteModeEnabled: true,
-                // markers: ,
                 initialCameraPosition: _kGooglePlex,
                 onMapCreated: (GoogleMapController controller) {
                   _controller.complete(controller);
@@ -299,17 +387,18 @@ class MapScreenState extends State<MapScreen> {
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: _goToTheStrelema,
-          label: const Text('To the lake!'),
-          icon: const Icon(Icons.directions_boat),
-        ),
+        // floatingActionButton: FloatingActionButton.extended(
+        //   onPressed: _goToTheStrelema,
+        //   label: const Text('To The Strelema!'),
+        //   icon: const Icon(Icons.directions_boat),
+        // ),
       ),
     );
   }
 
-  Future<void> _goToTheStrelema() async {
-    final GoogleMapController controller = await _controller.future;
-    await controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
-  }
+//////////////////FUNCTION FOR FLOATING ACTION BUTTON
+//   Future<void> _goToTheStrelema() async {
+//     final GoogleMapController controller = await _controller.future;
+//     await controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+//   }
 }
