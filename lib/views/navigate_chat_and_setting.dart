@@ -1,4 +1,6 @@
+import 'package:figma_task/components/elevated_button.dart';
 import 'package:figma_task/views/chat_list.dart';
+import 'package:figma_task/views/projects_page.dart';
 import 'package:figma_task/views/settings_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -14,7 +16,7 @@ class ChatAndSettingNavigation extends StatefulWidget {
 class _ChatAndSettingNavigationState extends State<ChatAndSettingNavigation> {
   List<Widget> pageList = [
     const ChatList(),
-    const Center(child: Text("Friends Page")),
+    const FriendsPage(),
     const Settings(),
   ];
 
@@ -108,5 +110,35 @@ class _ChatAndSettingNavigationState extends State<ChatAndSettingNavigation> {
       ),
       body: pageList[_selectedInd],
     );
+  }
+}
+
+class FriendsPage extends StatelessWidget {
+  const FriendsPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text("Friends Page"),
+        SizedBox(
+          height: 50,
+          width: 380,
+          child: PrimaryButton(
+            buttonText: "Next",
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Projects(),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    ));
   }
 }

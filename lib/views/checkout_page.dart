@@ -1,4 +1,5 @@
 import 'package:figma_task/components/elevated_button.dart';
+import 'package:figma_task/views/googlemaps.dart';
 import 'package:figma_task/views/your_bag_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -421,7 +422,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           borderRadius: BorderRadius.circular(5),
                         ),
                         side: const BorderSide(
-                            color: Color(0xFF72717A),
+                            color: Color(0xFFC5C6CC),
                             width: 2,
                             strokeAlign: -1),
                         onChanged: (value) {
@@ -546,11 +547,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
               onTap: () {
                 setState(
                   () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) => const Settings(),
-                    //     ));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MapScreen(),
+                        ));
                   },
                 );
               },

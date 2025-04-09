@@ -16,7 +16,6 @@ class MapScreen extends StatefulWidget {
 }
 
 class MapScreenState extends State<MapScreen> {
-  int pageIndex = 0;
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
 
@@ -35,197 +34,208 @@ class MapScreenState extends State<MapScreen> {
 
   void _showModalBottomSheet(MarkerModel element) {
     showModalBottomSheet(
+      backgroundColor: Colors.white,
+      scrollControlDisabledMaxHeightRatio: 0.73,
+      isDismissible: true,
       context: context,
+      showDragHandle: true,
       builder: (context) {
-        return Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Column(
-            children: [
-              Stack(
-                alignment: AlignmentDirectional.bottomCenter,
-                children: [
-                  CarouselSlider(
-                    options: CarouselOptions(
-                      // aspectRatio: 1,
-                      onPageChanged: (ind, _) {
-                        setState(() {
-                          pageIndex = ind;
-                        });
-                      },
-                      height: 180,
-                      viewportFraction: 1,
-                      initialPage: 1,
+        int pageIndex = 0;
+
+        return StatefulBuilder(
+          builder: (context, setState1) => Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Column(
+              children: [
+                Stack(
+                  alignment: AlignmentDirectional.bottomCenter,
+                  children: [
+                    CarouselSlider(
+                      options: CarouselOptions(
+                        padEnds: false,
+                        // aspectRatio: 1,
+                        onPageChanged: (ind, _) {
+                          setState1(() {
+                            pageIndex = ind;
+                          });
+                        },
+
+                        viewportFraction: 1,
+                        initialPage: 1,
+                      ),
+                      items: [
+                        Image.asset(
+                          "assets/ecom_carousel.png",
+                          fit: BoxFit.fill,
+                        ),
+                        Image.asset(
+                          "assets/ecom_carousel.png",
+                          fit: BoxFit.fitHeight,
+                        ),
+                        Image.asset(
+                          "assets/ecom_carousel.png",
+                          fit: BoxFit.fitHeight,
+                        ),
+                        Image.asset(
+                          "assets/ecom_carousel.png",
+                          fit: BoxFit.fitHeight,
+                        ),
+                        Image.asset(
+                          "assets/ecom_carousel.png",
+                          fit: BoxFit.fitHeight,
+                        ),
+                      ],
                     ),
-                    items: [
-                      Image.asset(
-                        "assets/ecom_carousel.png",
-                        fit: BoxFit.fitHeight,
-                      ),
-                      Image.asset(
-                        "assets/ecom_carousel.png",
-                        fit: BoxFit.fitHeight,
-                      ),
-                      Image.asset(
-                        "assets/ecom_carousel.png",
-                        fit: BoxFit.fitHeight,
-                      ),
-                      Image.asset(
-                        "assets/ecom_carousel.png",
-                        fit: BoxFit.fitHeight,
-                      ),
-                      Image.asset(
-                        "assets/ecom_carousel.png",
-                        fit: BoxFit.fitHeight,
-                      ),
-                    ],
-                  ),
-                  Positioned(
-                    top: 5,
-                    left: 0,
-                    right: 0,
-                    child: SvgPicture.asset(
-                      "assets/bottomsheet_handle.svg",
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 15,
-                    left: 0,
-                    right: 0,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(
-                        5,
-                        (int ind) => Container(
-                          height: 8,
-                          margin: const EdgeInsets.only(right: 5),
-                          width: 8,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: pageIndex == ind
-                                ? const Color(0xFF006FFD)
-                                : const Color(0xFFC5C6CC),
+                    // Positioned(
+                    //   top: 5,
+                    //   left: 0,
+                    //   right: 0,
+                    //   child: SvgPicture.asset(
+                    //     "assets/bottomsheet_handle.svg",
+                    //   ),
+                    // ),
+                    Positioned(
+                      bottom: 15,
+                      left: 0,
+                      right: 0,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(
+                          5,
+                          (int ind) => Container(
+                            height: 8,
+                            margin: const EdgeInsets.only(right: 5),
+                            width: 8,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: pageIndex == ind
+                                  ? const Color(0xFF006FFD)
+                                  : const Color(0xFFC5C6CC),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.all(24),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      element.title,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w800,
-                        fontSize: 16,
-                      ),
-                    ),
-                    const Gap(4),
-                    Text(
-                      element.price,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w800,
-                        fontSize: 14,
-                        color: Color(0xFF71727A),
-                      ),
-                    ),
-                    const Gap(24),
-                    const Text(
-                      "About",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 10,
-                        color: Color(0xFF8F9098),
-                      ),
-                    ),
-                    const Gap(8),
-                    Text(
-                      element.about,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w800,
-                        fontSize: 12,
-                        color: Color(0xFF71727A),
-                      ),
-                    ),
-                    const Gap(24),
-                    const Text(
-                      "Hosted by",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 10,
-                      ),
-                    ),
-                    const Gap(8),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Flexible(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.asset(
-                          "assets/bottomSheetProfile.png",
+                        Text(
+                          element.title,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 16,
+                          ),
                         ),
-                        const Gap(4.5),
-                        Column(
+                        const Gap(4),
+                        Text(
+                          element.price,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 14,
+                            color: Color(0xFF71727A),
+                          ),
+                        ),
+                        const Gap(24),
+                        const Text(
+                          "About",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 10,
+                            color: Color(0xFF8F9098),
+                          ),
+                        ),
+                        const Gap(8),
+                        Text(
+                          element.about,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 12,
+                            color: Color(0xFF71727A),
+                          ),
+                        ),
+                        const Gap(24),
+                        const Text(
+                          "Hosted by",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 10,
+                          ),
+                        ),
+                        const Gap(8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text(
-                              element.hostedBy,
-                              style: const TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                              ),
+                            Image.asset(
+                              "assets/bottomSheetProfile.png",
                             ),
-                            const Gap(2),
-                            Row(
+                            const Gap(4.5),
+                            Column(
                               children: [
-                                SvgPicture.asset(
-                                  "assets/star_filled.svg",
-                                  width: 12,
+                                Text(
+                                  element.hostedBy,
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 ),
                                 const Gap(2),
-                                const Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    "4.5",
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: Color(0xFF71727A),
+                                Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      "assets/star_filled.svg",
+                                      width: 12,
                                     ),
-                                  ),
+                                    const Gap(2),
+                                    const Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        "4.5",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Color(0xFF71727A),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
                           ],
                         ),
+                        const Gap(24),
+                        Container(
+                          width: double.infinity,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: const Color(0xFF006FFD),
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                elevation: 0,
+                                backgroundColor: Colors.white,
+                                foregroundColor: const Color(0xFF006FFD)),
+                            child: const Text("See details"),
+                          ),
+                        )
                       ],
                     ),
-                    const Gap(24),
-                    Container(
-                      width: double.infinity,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xFF006FFD),
-                        ),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            backgroundColor: Colors.white,
-                            foregroundColor: const Color(0xFF006FFD)),
-                        child: const Text("See details"),
-                      ),
-                    )
-                  ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
@@ -326,6 +336,7 @@ class MapScreenState extends State<MapScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
           leading: IconButton(
             onPressed: () {},
             icon: const Icon(

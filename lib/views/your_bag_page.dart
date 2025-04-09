@@ -1,3 +1,4 @@
+import 'package:figma_task/views/checkout_page.dart';
 import 'package:figma_task/views/e_commerce_pg1.dart';
 import 'package:gap/gap.dart';
 // import 'package:figma_task/views/e_commerce_pg2.dart';
@@ -71,12 +72,12 @@ class _YourBagState extends State<YourBag> {
               child: PrimaryButton(
                 buttonText: "Checkout",
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => const Subscription(),
-                  //   ),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CheckoutPage(),
+                    ),
+                  );
                 },
               ),
             ),

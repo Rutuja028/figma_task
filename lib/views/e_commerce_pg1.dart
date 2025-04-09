@@ -47,95 +47,190 @@ class _ECommercePg1State extends State {
   ];
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      children: [
-        Stack(
-          alignment: AlignmentDirectional.bottomCenter,
-          children: [
-            CarouselSlider(
-              options: CarouselOptions(
-                onPageChanged: (ind, _) {
-                  setState(() {
-                    pageIndex = ind;
-                  });
-                },
-                height: 214,
-                viewportFraction: 1,
-                initialPage: 1,
+    return Scaffold(
+      body: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        children: [
+          Stack(
+            alignment: AlignmentDirectional.bottomCenter,
+            children: [
+              CarouselSlider(
+                options: CarouselOptions(
+                  onPageChanged: (ind, _) {
+                    setState(() {
+                      pageIndex = ind;
+                    });
+                  },
+                  height: 214,
+                  viewportFraction: 1,
+                  initialPage: 1,
+                ),
+                items: [
+                  Image.asset("assets/ecom_carousel.png"),
+                  Image.asset("assets/ecom_carousel.png"),
+                  Image.asset("assets/ecom_carousel.png"),
+                  Image.asset("assets/ecom_carousel.png"),
+                  Image.asset("assets/ecom_carousel.png"),
+                ],
               ),
-              items: [
-                Image.asset("assets/ecom_carousel.png"),
-                Image.asset("assets/ecom_carousel.png"),
-                Image.asset("assets/ecom_carousel.png"),
-                Image.asset("assets/ecom_carousel.png"),
-                Image.asset("assets/ecom_carousel.png"),
-              ],
-            ),
-            Positioned(
-              bottom: 15,
-              left: 0,
-              right: 0,
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  5,
-                  (int ind) => Container(
-                    height: 8,
-                    margin: const EdgeInsets.only(right: 5),
-                    width: 8,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: pageIndex == ind
-                          ? const Color(0xFF006FFD)
-                          : const Color(0xFFC5C6CC),
+              Positioned(
+                bottom: 15,
+                left: 0,
+                right: 0,
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    5,
+                    (int ind) => Container(
+                      height: 8,
+                      margin: const EdgeInsets.only(right: 5),
+                      width: 8,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: pageIndex == ind
+                            ? const Color(0xFF006FFD)
+                            : const Color(0xFFC5C6CC),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-        const Gap(24),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              "Perfect for you",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            TextButton(
-              child: const Text(
-                "See more",
+            ],
+          ),
+          const Gap(24),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                "Perfect for you",
                 style: TextStyle(
-                  color: Color(0xFF006FFD),
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
-              onPressed: () {},
+              TextButton(
+                child: const Text(
+                  "See more",
+                  style: TextStyle(
+                    color: Color(0xFF006FFD),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                onPressed: () {},
+              ),
+            ],
+          ),
+          const Gap(20),
+          SizedBox(
+            height: 189,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: allProducts.map(
+                (e) {
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ECommercePg2(
+                            model: e,
+                          ),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8),
+                      clipBehavior: Clip.antiAlias,
+                      width: 200,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFF8F9FE),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(16),
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Image.asset(
+                            "assets/image.png",
+                            height: 120,
+                            fit: BoxFit.fill,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  e.name,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.copyWith(
+                                        height: 12 / 16,
+                                      ),
+                                ),
+                                const Gap(4),
+                                Text(
+                                  e.price,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.w700,
+                                        height: 1,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ).toList(),
             ),
-          ],
-        ),
-        const Gap(20),
-        SizedBox(
-          height: 189,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: allProducts.map(
-              (e) {
+          ),
+          const Gap(40),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                "For this summer",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              TextButton(
+                child: const Text(
+                  "See more",
+                  style: TextStyle(
+                    color: Color(0xFF006FFD),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                onPressed: () {},
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 189,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: allProducts.map((e) {
                 return InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ECommercePg2(
-                          model: e,
-                        ),
+                        builder: (context) => ECommercePg2(model: e),
                       ),
                     );
                   },
@@ -159,7 +254,7 @@ class _ECommercePg1State extends State {
                           fit: BoxFit.fill,
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -169,9 +264,7 @@ class _ECommercePg1State extends State {
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodySmall
-                                    ?.copyWith(
-                                      height: 12 / 16,
-                                    ),
+                                    ?.copyWith(height: 12 / 16),
                               ),
                               const Gap(4),
                               Text(
@@ -191,102 +284,11 @@ class _ECommercePg1State extends State {
                     ),
                   ),
                 );
-              },
-            ).toList(),
-          ),
-        ),
-        const Gap(40),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              "For this summer",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-              ),
+              }).toList(),
             ),
-            TextButton(
-              child: const Text(
-                "See more",
-                style: TextStyle(
-                  color: Color(0xFF006FFD),
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              onPressed: () {},
-            ),
-          ],
-        ),
-        SizedBox(
-          height: 189,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: allProducts.map((e) {
-              return InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ECommercePg2(model: e),
-                    ),
-                  );
-                },
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8),
-                  clipBehavior: Clip.antiAlias,
-                  width: 200,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFFF8F9FE),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(16),
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Image.asset(
-                        "assets/image.png",
-                        height: 120,
-                        fit: BoxFit.fill,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              e.name,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
-                                  ?.copyWith(height: 12 / 16),
-                            ),
-                            const Gap(4),
-                            Text(
-                              e.price,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(
-                                    fontWeight: FontWeight.w700,
-                                    height: 1,
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            }).toList(),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

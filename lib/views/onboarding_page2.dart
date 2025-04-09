@@ -39,12 +39,10 @@ class _OnBoarding2State extends State<OnBoarding2> {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Padding(
-          padding: const EdgeInsets.only(right: 24, left: 24),
+          padding: const EdgeInsets.all(24),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const SizedBox(height: 10),
-              const Gap(73),
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text("Personalise your \nexperience",

@@ -1,7 +1,7 @@
 // import 'package:figma_task/views/checkout_page.dart';
-import 'package:figma_task/views/googlemaps.dart';
-import 'package:figma_task/views/personal_chat_page.dart';
-
+// import 'package:figma_task/views/googlemaps.dart';
+// import 'package:figma_task/views/onboarding_page1.dart';
+//import 'package:figma_task/views/personal_chat_page.dart';
 // import 'package:figma_task/views/navigate_chat_and_setting.dart';
 // import 'package:figma_task/views/your_bag_page.dart';
 // import 'package:figma_task/views/navigt_e_com.dart';
@@ -15,7 +15,7 @@ import 'package:figma_task/views/personal_chat_page.dart';
 // import 'package:figma_task/views/feedback_page.dart';
 // import 'package:figma_task/views/subscription_tile.dart';
 // import 'package:figma_task/views/settings_page.dart';
-// import 'package:figma_task/views/sign_in.dart';
+import 'package:figma_task/views/sign_in.dart';
 
 import 'package:flutter/material.dart';
 
@@ -33,11 +33,11 @@ class MainApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: const MapScreen(),
+      // home: const OnBoarding(),
       //home: const PersonalChatPage(),
       //home: const EcomBottomNavBar(),
       //home: const ChatAndSettingNavigation(),
-      //home: const SignIn(),
+      home: const SignIn(),
       //home: const ECommercePg2(),
       //home: const ECommercePg1(),
       //home: const FilterPage()

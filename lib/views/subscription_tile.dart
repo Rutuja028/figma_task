@@ -1,5 +1,5 @@
 import 'package:figma_task/components/elevated_button.dart';
-import 'package:figma_task/views/settings_2.dart';
+import 'package:figma_task/views/navigate_chat_and_setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -60,6 +60,7 @@ class _SubscriptionState extends State<Subscription> {
             const Gap(48),
             const Text("Choose your\nsubscription plan",
                 style: TextStyle(
+                  fontFamily: 'Inter',
                   letterSpacing: 0.01,
                   fontSize: 24,
                   fontWeight: FontWeight.w800,
@@ -121,6 +122,7 @@ class _SubscriptionState extends State<Subscription> {
                           child: Text(
                             e.value.trailTextUp,
                             style: const TextStyle(
+                              color: Colors.black,
                               fontSize: 16,
                               fontWeight: FontWeight.w800,
                             ),
@@ -130,6 +132,7 @@ class _SubscriptionState extends State<Subscription> {
                           child: Text(
                             e.value.trailTextDown,
                             style: const TextStyle(
+                              color: Colors.black,
                               fontSize: 10,
                             ),
                           ),
@@ -150,9 +153,13 @@ class _SubscriptionState extends State<Subscription> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("You'll get:",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
+                  const Text(
+                    "You'll get:",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
                   const Gap(16),
                   Row(
                     children: [
@@ -230,7 +237,7 @@ class _SubscriptionState extends State<Subscription> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Settings(),
+                        builder: (context) => const ChatAndSettingNavigation(),
                       ));
                 });
               },

@@ -214,9 +214,11 @@ class _ECommercePg2State extends State<ECommercePg2> {
                     padding: const EdgeInsets.only(top: 8, bottom: 8, right: 8),
                     child: InkWell(
                       onTap: () {
-                        setState(() {
-                          selectBadge = value;
-                        });
+                        setState(
+                          () {
+                            selectBadge = value;
+                          },
+                        );
                       },
                       child: selectBadge == value
                           ? Badge(

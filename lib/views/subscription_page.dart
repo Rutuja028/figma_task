@@ -1,5 +1,5 @@
 import 'package:figma_task/components/elevated_button.dart';
-import 'package:figma_task/views/settings_2.dart';
+import 'package:figma_task/views/navigate_chat_and_setting.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -58,11 +58,15 @@ class _SubscriptionState extends State<Subscription> {
                 const Gap(73),
                 const Align(
                   alignment: Alignment.centerLeft,
-                  child: Text("Choose your \nsubscription plan",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w800,
-                      )),
+                  child: Text(
+                    "Choose your \nsubscription plan",
+                    style: TextStyle(
+                      height: 1,
+                      letterSpacing: 0.01,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
                 ),
                 const Gap(16),
                 const Align(
@@ -159,7 +163,8 @@ class _SubscriptionState extends State<Subscription> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Settings(),
+                          builder: (context) =>
+                              const ChatAndSettingNavigation(),
                         ),
                       );
                     },

@@ -1,9 +1,11 @@
+import 'package:figma_task/views/onboarding_page1.dart';
 import 'package:flutter/material.dart';
 
 import 'package:figma_task/components/text_form_field.dart';
 import 'package:figma_task/components/elevated_button.dart';
-import 'package:figma_task/views/onboarding_page1.dart';
 import 'package:figma_task/views/sign_up.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -50,10 +52,11 @@ class _SignInState extends State<SignIn> {
                 "assets/SignInImage.png",
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height * 0.5,
-                fit: BoxFit.fitWidth,
+                fit: BoxFit.fill,
               ),
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.only(
+                    left: 24, right: 24, top: 40, bottom: 24),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -61,14 +64,16 @@ class _SignInState extends State<SignIn> {
                     children: [
                       const Align(
                         alignment: Alignment.centerLeft,
-                        child: Text("Welcome!",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 24,
-                              fontWeight: FontWeight.w800,
-                            )),
+                        child: Text(
+                          "Welcome!",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
                       ),
-                      const SizedBox(height: 20),
+                      const Gap(24),
                       // PrimaryTextFormField(
                       //   keyboardType: TextInputType.phone,
                       //   obscureText: false,
@@ -91,6 +96,7 @@ class _SignInState extends State<SignIn> {
                       PrimaryTextFormField(
                         controller: emailController,
                         hintText: "Email Address",
+                        keyboardType: TextInputType.emailAddress,
                         obscureText: false,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -104,16 +110,17 @@ class _SignInState extends State<SignIn> {
                         },
                       ),
 
-                      const SizedBox(height: 10),
+                      const Gap(16),
                       PrimaryTextFormField(
                         keyboardType: TextInputType.text,
                         controller: passwordController,
                         hintText: "Password",
                         suffixIcon: IconButton(
+                          color: const Color(0xFF8F9098),
                           icon: showPass
-                              ? const Icon(Icons.visibility_off_rounded)
-                              : const Icon(Icons.visibility_rounded),
-                          color: const Color(0xFFC5C6CC),
+                              ? SvgPicture.asset("assets/visibility_off.svg",
+                                  height: 16, width: 16)
+                              : const Icon(Icons.visibility_rounded, size: 16),
                           onPressed: () {
                             setState(() {
                               showPass = !showPass;
@@ -132,7 +139,7 @@ class _SignInState extends State<SignIn> {
                         },
                         inputFormatters: [],
                       ),
-                      const SizedBox(height: 10),
+                      const Gap(16),
                       Align(
                         alignment: Alignment.centerLeft,
                         child: InkWell(
@@ -146,7 +153,7 @@ class _SignInState extends State<SignIn> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      const Gap(24),
                       SizedBox(
                         height: 50,
                         width: 380,
@@ -155,8 +162,9 @@ class _SignInState extends State<SignIn> {
                           onTap: _signIn,
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      const Gap(16),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text(
                             "Not a member? ",
@@ -177,7 +185,7 @@ class _SignInState extends State<SignIn> {
                             child: const Text(
                               "Register Now",
                               style: TextStyle(
-                                color: Color(0xFF000000),
+                                color: Color(0xFF006FFD),
                                 fontSize: 13,
                                 fontWeight: FontWeight.w400,
                               ),

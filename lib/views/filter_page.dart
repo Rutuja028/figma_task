@@ -1,7 +1,8 @@
 import 'package:figma_task/components/elevated_button.dart';
 import 'package:figma_task/components/expansion_tile.dart';
 import 'package:figma_task/components/price_range_expansion_tile.dart';
-import 'package:figma_task/views/searchPage.dart';
+import 'package:figma_task/views/e_commerce_pg1.dart';
+// import 'package:figma_task/views/searchPage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:figma_task/constants.dart';
@@ -29,7 +30,7 @@ class _FilterPageState extends State<FilterPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const SearchPage1(),
+                  builder: (context) => const ECommercePg1(),
                 ),
               );
             },
